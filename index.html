@@ -1,27 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="theme-color" content="#0f1e3d" />
 <title>SAFHIB — Print Your Style · Launching Soon</title>
 
-<!-- SEO -->
 <meta name="description" content="SAFHIB — Premium printed shirts & print-on-demand. Print Your Style, Wear Your Identity. Launching soon." />
 <meta name="keywords" content="SAFHIB, printed shirts, print on demand, custom apparel, premium fashion" />
 <meta name="author" content="SAFHIB" />
-<link rel="canonical" href="https://safhib.com/" />
 
-<!-- Open Graph / Social -->
+<!-- Social preview (can update to full URL if needed) -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="SAFHIB — Print Your Style" />
 <meta property="og:description" content="Premium printed shirts & print-on-demand. Launching soon." />
 <meta property="og:image" content="logo.png" />
 <meta property="og:url" content="https://safhib.com/" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="SAFHIB — Print Your Style" />
-<meta name="twitter:description" content="Premium printed shirts. Launching soon." />
-<meta name="twitter:image" content="logo.png" />
 
 <link rel="icon" href="logo.png" />
 <link rel="apple-touch-icon" href="logo.png" />
@@ -35,374 +30,135 @@
     --navy: #0f1e3d;
     --navy-light: #1c2e5a;
     --cream: #f6f2ea;
-    --cream-deep: #ede5d4;
     --gold: #c9a96e;
-    --gold-light: #d9bd87;
     --text: #0f1e3d;
-    --bg-grad-1: #f6f2ea;
-    --bg-grad-2: #ede5d4;
-    --card-bg: rgba(255, 255, 255, 0.55);
-    --card-border: rgba(15, 30, 61, 0.08);
-    --shadow-soft: 0 20px 60px rgba(15, 30, 61, 0.12);
-    --shadow-strong: 0 30px 80px rgba(15, 30, 61, 0.2);
+    --bg1: #f6f2ea;
+    --bg2: #ede5d4;
+    --card-bg: rgba(255,255,255,0.56);
+    --card-border: rgba(15,30,61,0.08);
+    --shadow-soft: 0 20px 60px rgba(15,30,61,0.12);
   }
 
   [data-theme="dark"] {
     --navy: #f6f2ea;
-    --navy-light: #ede5d4;
     --cream: #0f1e3d;
-    --cream-deep: #0a1530;
-    --gold: #d9bd87;
-    --text: #f6f2ea;
-    --bg-grad-1: #0a1530;
-    --bg-grad-2: #1c2e5a;
-    --card-bg: rgba(255, 255, 255, 0.06);
-    --card-border: rgba(255, 255, 255, 0.1);
-    --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.4);
+    --bg1: #0a1530;
+    --bg2: #1c2e5a;
+    --card-bg: rgba(255,255,255,0.05);
+    --card-border: rgba(255,255,255,0.08);
+    --shadow-soft: 0 20px 60px rgba(0,0,0,0.5);
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-
-  html, body {
-    min-height: 100%;
+  body {
+    min-height: 100vh;
     font-family: 'Inter', sans-serif;
     color: var(--text);
-    overflow-x: hidden;
-  }
-
-  body {
-    background: linear-gradient(135deg, var(--bg-grad-1) 0%, var(--bg-grad-2) 50%, var(--bg-grad-1) 100%);
+    background: linear-gradient(135deg,var(--bg1) 0%,var(--bg2) 50%,var(--bg1) 100%);
     background-size: 400% 400%;
     animation: gradientShift 22s ease infinite;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    transition: color 0.4s ease;
+    display:flex; flex-direction:column;
+    overflow-x:hidden;
   }
-
-  @keyframes gradientShift {
-    0%, 100% { background-position: 0% 50%; }
-    50%      { background-position: 100% 50%; }
-  }
+  @keyframes gradientShift { 0%,100%{background-position:0% 50%}50%{background-position:100% 50%} }
 
   /* Decorative blobs */
-  .blob {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.22;
-    z-index: 0;
-    pointer-events: none;
-    animation: blobMove 20s ease-in-out infinite;
-  }
-  .blob.one { width: 450px; height: 450px; background: var(--navy); top: -120px; left: -120px; }
-  .blob.two { width: 380px; height: 380px; background: var(--gold); bottom: -120px; right: -120px; animation-delay: -10s; }
-
-  @keyframes blobMove {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50%      { transform: translate(40px, -30px) scale(1.1); }
-  }
+  .blob{ position:fixed; border-radius:50%; filter:blur(120px); opacity:0.22; z-index:0; pointer-events:none; }
+  .blob.one{ width:450px;height:450px;background:var(--navy); top:-120px; left:-120px; }
+  .blob.two{ width:380px;height:380px;background:var(--gold); bottom:-120px; right:-120px; }
 
   /* Theme toggle */
   .theme-toggle {
-    position: fixed;
-    top: 24px;
-    right: 24px;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: var(--card-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--card-border);
-    color: var(--navy);
-    cursor: pointer;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s, background 0.3s;
+    position: fixed; top: 20px; right: 20px; z-index: 10;
+    width:44px;height:44px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--card-bg); border:1px solid var(--card-border);
+    backdrop-filter: blur(10px); cursor:pointer;
   }
-  .theme-toggle:hover { transform: scale(1.1) rotate(15deg); }
-  .theme-toggle svg { width: 20px; height: 20px; }
 
   main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 20px 40px;
-    text-align: center;
-    position: relative;
-    z-index: 1;
+    flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding: 60px 20px 40px; text-align:center; position:relative; z-index:1;
   }
 
-  /* Logo */
+  /* Logo wrapper: circular badge with padding; image fits inside and keeps its aspect */
   .logo-wrap {
-    width: 180px;
-    height: 180px;
-    background: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--shadow-soft);
-    margin-bottom: 32px;
-    animation: float 6s ease-in-out infinite;
-    padding: 14px;
-    position: relative;
+    width: 185px; height: 185px;
+    background: #fff; border-radius: 50%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: var(--shadow-soft); margin-bottom: 28px; padding: 14px; position:relative;
   }
-  .logo-wrap::before {
-    content: "";
-    position: absolute;
-    inset: -6px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--gold), transparent, var(--gold));
-    z-index: -1;
-    opacity: 0.5;
-    animation: rotate 12s linear infinite;
+  .logo-wrap::before{
+    content:""; position:absolute; inset:-6px; border-radius:50%;
+    background: linear-gradient(135deg,var(--gold),transparent); opacity:0.45; z-index:-1;
   }
-  .logo-wrap img { width: 100%; height: 100%; object-fit: contain; }
+  .logo-wrap img {
+    width:100%; height:100%; object-fit:contain; display:block;
+  }
+  /* If the logo is narrow or wide, keep it visually centered with max auto sizes */
+  .logo-wrap img.small { max-width: 78%; max-height: 78%; }
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(-12px); }
-  }
-  @keyframes rotate {
-    to { transform: rotate(360deg); }
-  }
-
-  /* Brand */
   .brand {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3.5rem, 10vw, 6.5rem);
+    font-weight:700;
+    font-size: clamp(3.5rem, 10vw, 5.5rem);
     color: var(--navy);
-    letter-spacing: 0.4em;
-    font-weight: 700;
-    margin-bottom: 12px;
-    padding-left: 0.4em;
+    letter-spacing: 0.38em;
+    margin-bottom:6px;
+    padding-left:0.38em;
     background: linear-gradient(135deg, var(--navy), var(--navy-light));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: fadeUp 1s ease 0.2s both;
+    -webkit-background-clip: text; background-clip:text; -webkit-text-fill-color:transparent;
   }
 
   .tagline {
-    font-size: clamp(0.8rem, 2vw, 1rem);
-    color: var(--navy);
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    margin-bottom: 48px;
-    opacity: 0.8;
-    animation: fadeUp 1s ease 0.4s both;
+    font-size: clamp(0.8rem,2vw,1rem);
+    letter-spacing: 0.28em; text-transform:uppercase; color:var(--navy); opacity:0.78;
+    margin-bottom:32px;
   }
-  .tagline::before, .tagline::after {
-    content: "—";
-    margin: 0 12px;
-    color: var(--gold);
-  }
+  .tagline::before,.tagline::after{ content:"—"; margin:0 10px; color:var(--gold); }
 
   .coming-soon {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.6rem, 4vw, 2.4rem);
-    color: var(--navy);
-    font-style: italic;
-    margin-bottom: 36px;
-    font-weight: 500;
-    animation: fadeUp 1s ease 0.6s both;
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    font-size: clamp(1.5rem,4vw,2.2rem); color:var(--navy); margin-bottom:28px;
   }
-  .coming-soon::after {
-    content: "";
-    display: block;
-    width: 70px;
-    height: 1px;
-    background: var(--gold);
-    margin: 16px auto 0;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+  .coming-soon::after{ content:""; display:block; width:60px; height:1px; background:var(--gold); margin:12px auto 0;}
 
   /* Countdown */
-  .countdown {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 48px;
-    flex-wrap: wrap;
-    justify-content: center;
-    animation: fadeUp 1s ease 0.8s both;
-  }
+  .countdown { display:flex; gap:16px; margin-bottom:36px; flex-wrap:wrap; justify-content:center; }
   .count-box {
-    background: var(--card-bg);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: 20px 26px;
-    min-width: 90px;
-    transition: transform 0.3s, box-shadow 0.3s;
+    background: var(--card-bg); backdrop-filter:blur(12px);
+    border:1px solid var(--card-border); border-radius:12px; padding:16px 22px; min-width:84px;
   }
-  .count-box:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-soft);
-  }
-  .count-box .num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: var(--navy);
-    line-height: 1;
-    font-variant-numeric: tabular-nums;
-  }
-  .count-box .label {
-    font-size: 0.7rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--navy);
-    opacity: 0.7;
-    margin-top: 8px;
-  }
+  .count-box .num { font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:700; color:var(--navy); line-height:1; font-variant-numeric:tabular-nums; }
+  .count-box .label { font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--navy); opacity:0.72; margin-top:6px; }
 
   /* Notify form */
-  .notify {
-    width: 100%;
-    max-width: 480px;
-    margin-bottom: 36px;
-    animation: fadeUp 1s ease 1s both;
-  }
-  .notify p {
-    font-size: 0.92rem;
-    color: var(--navy);
-    margin-bottom: 16px;
-    opacity: 0.85;
-  }
-  .notify form {
-    display: flex;
-    background: var(--card-bg);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid var(--card-border);
-    border-radius: 50px;
-    overflow: hidden;
-    box-shadow: var(--shadow-soft);
-    transition: box-shadow 0.3s;
-  }
-  .notify form:focus-within {
-    box-shadow: var(--shadow-strong);
-  }
-  .notify input {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 16px 24px;
-    font-family: inherit;
-    font-size: 0.92rem;
-    background: transparent;
-    color: var(--navy);
-  }
-  .notify input::placeholder { color: var(--navy); opacity: 0.5; }
-  .notify button {
-    border: none;
-    background: var(--navy);
-    color: var(--cream);
-    padding: 0 32px;
-    font-family: inherit;
-    font-size: 0.8rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-  }
-  .notify button:hover { background: var(--gold); }
-  .notify button:active { transform: scale(0.97); }
-  .notify .message {
-    font-size: 0.85rem;
-    margin-top: 14px;
-    opacity: 0;
-    transform: translateY(-4px);
-    transition: opacity 0.3s, transform 0.3s;
-    min-height: 1.2em;
-  }
-  .notify .message.show { opacity: 1; transform: translateY(0); }
-  .notify .message.success { color: var(--navy); }
-  .notify .message.error   { color: #c0392b; }
+  .notify { width:100%; max-width:480px; margin-bottom:28px; }
+  .notify p { color:var(--navy); opacity:0.86; margin-bottom:12px; }
+  .notify form { display:flex; background:var(--card-bg); border:1px solid var(--card-border); border-radius:50px; overflow:hidden; box-shadow:var(--shadow-soft); }
+  .notify input { flex:1; padding:14px 20px; border:none; outline:none; font-size:0.92rem; background:transparent; color:var(--navy); }
+  .notify button { border:none; background:var(--navy); color:var(--cream); padding:0 26px; text-transform:uppercase; letter-spacing:0.15em; cursor:pointer; font-weight:600; }
+  .message { font-size:0.85rem; margin-top:12px; min-height:1.1em; opacity:0; transform:translateY(-4px); transition:all .25s ease; }
+  .message.show { opacity:1; transform:translateY(0); }
+  .message.success { color:var(--navy); } .message.error { color:#c0392b; }
 
-  /* Socials */
-  .socials {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 20px;
-    animation: fadeUp 1s ease 1.2s both;
-  }
-  .socials a {
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    background: var(--navy);
-    color: var(--cream);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
-    text-decoration: none;
-  }
-  .socials a:hover {
-    transform: translateY(-5px);
-    background: var(--gold);
-    box-shadow: 0 10px 20px rgba(201, 169, 110, 0.4);
-  }
-  .socials svg { width: 20px; height: 20px; }
+  .socials { display:flex; gap:14px; margin-top:10px; justify-content:center; }
+  .socials a { width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--navy);color:var(--cream);text-decoration:none; }
+  .socials a:hover { transform:translateY(-4px); background:var(--gold); box-shadow:0 10px 20px rgba(201,169,110,0.28); }
 
-  footer {
-    text-align: center;
-    padding: 24px 20px;
-    font-size: 0.72rem;
-    color: var(--navy);
-    opacity: 0.6;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    position: relative;
-    z-index: 1;
-  }
-  footer a {
-    color: var(--gold);
-    text-decoration: none;
+  footer{ text-align:center; padding:22px 18px; font-size:0.75rem; color:var(--navy); opacity:0.64; letter-spacing:0.15em; text-transform:uppercase; }
+
+  @media (max-width:480px){
+    .logo-wrap{ width:140px; height:140px; }
+    .brand{ font-size: clamp(2.2rem, 16vw, 4rem); letter-spacing:0.24em; }
+    .count-box{ padding:12px 16px; min-width:68px; }
+    .notify form{ flex-direction:column; border-radius:16px; }
+    .notify button{ padding:14px 18px; width:100%; }
   }
 
-  /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
-  }
-
-  /* Responsive */
-  @media (max-width: 480px) {
-    .logo-wrap { width: 140px; height: 140px; }
-    .count-box { padding: 14px 18px; min-width: 70px; }
-    .count-box .num { font-size: 1.7rem; }
-    .notify form { flex-direction: column; border-radius: 16px; }
-    .notify button { padding: 16px; }
-    .theme-toggle { top: 16px; right: 16px; }
-  }
-
-  /* Utility: visually-hidden (used for accessibility) */
-  .sr-only {
-    position: absolute;
-    left: -9999px;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   }
 </style>
 </head>
@@ -411,16 +167,16 @@
 <div class="blob one" aria-hidden="true"></div>
 <div class="blob two" aria-hidden="true"></div>
 
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
-  <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <circle cx="12" cy="12" r="4"/>
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+  <svg id="themeIcon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4"></circle>
     <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
   </svg>
 </button>
 
 <main>
   <div class="logo-wrap" aria-hidden="false">
-    <!-- auto-detect script will swap src if needed -->
+    <!-- id used by script; src initially logo.png -->
     <img id="siteLogo" src="logo.png" alt="SAFHIB Logo" />
   </div>
 
@@ -439,7 +195,7 @@
   <div class="notify">
     <p>Be the first to know when we launch.</p>
     <form id="notifyForm" novalidate>
-      <label for="email" class="sr-only">Email address</label>
+      <label for="email" style="position:absolute;left:-9999px">Email address</label>
       <input type="email" id="email" name="email" placeholder="Enter your email" required autocomplete="email" />
       <button type="submit">Notify Me</button>
     </form>
@@ -447,65 +203,139 @@
   </div>
 
   <div class="socials" aria-hidden="false">
-    <a href="https://www.instagram.com/safhib_official/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.07 1.2.06 1.8.25 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.07 1.2.07 1.6.07 4.8s0 3.6-.07 4.8c-.06 1.2-.25 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.07-1.6.07-4.8.07s-3.6 0-4.8-.07c-1.2-.06-1.8-.25-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.8c.06-1.2.25-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.07-1 .05-1.6.22-2 .37-.5.2-.8.4-1.2.8-.4.4-.6.7-.8 1.2-.15.4-.32 1-.37 2C3 8.5 3 8.9 3 12s0 3.5.07 4.7c.05 1 .22 1.6.37 2 .2.5.4.8.8 1.2.4.4.7.6 1.2.8.4.15 1 .32 2 .37 1.2.07 1.6.07 4.7.07s3.5 0 4.7-.07c1-.05 1.6-.22 2-.37.5-.2.8-.4 1.2-.8.4-.4.6-.7.8-1.2.15-.4.32-1 .37-2 .07-1.2.07-1.6.07-4.7s0-3.5-.07-4.7c-.05-1-.22-1.6-.37-2-.2-.5-.4-.8-.8-1.2-.4-.4-.7-.6-1.2-.8-.4-.15-1-.32-2-.37C15.5 4 15.1 4 12 4zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 1.8a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2zm5.1-2.1a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg>
+    <a href="https://www.instagram.com/safhib_official/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.2c3.2 0 3.6 0 4.8.07 1.2.06 1.8.25 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.07 1.2.07 1.6.07 4.8s0 3.6-.07 4.8c-.06 1.2-.25 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.07-1.6.07-4.8.07s-3.6 0-4.8-.07c-1.2-.06-1.8-.25-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.8c.06-1.2.25-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.07-1 .05-1.6.22-2 .37-.5.2-.8.4-1.2.8-.4.4-.6.7-.8 1.2-.15.4-.32 1-.37 2C3 8.5 3 8.9 3 12s0 3.5.07 4.7c.05 1 .22 1.6.37 2 .2.5.4.8.8 1.2.4.4.7.6 1.2.8.4.15 1 .32 2 .37 1.2.07 1.6.07 4.7.07s3.5 0 4.7-.07c1-.05 1.6-.22 2-.37.5-.2.8-.4 1.2-.8.4-.4.6-.7.8-1.2.15-.4.32-1 .37-2 .07-1.2.07-1.6.07-4.7s0-3.5-.07-4.7c-.05-1-.22-1.6-.37-2-.2-.5-.4-.8-.8-1.2-.4-.4-.7-.6-1.2-.8-.4-.15-1-.32-2-.37C15.5 4 15.1 4 12 4zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 1.8a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2zm5.1-2.1a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg>
     </a>
-    <a href="mailto:safhib.official@gmail.com" aria-label="Email us">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    <a href="mailto:safhib.official@gmail.com" aria-label="Email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
     </a>
     <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.1-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15l-1.4 5.1 5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.1-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15l-1.4 5.1 5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
     </a>
   </div>
 </main>
 
 <footer>
-  © <span id="year"></span> SAFHIB · Crafted with care · <a href="mailto:safhib.official@gmail.com">Contact</a>
+  © <span id="year"></span> SAFHIB · All Rights Reserved · <a href="mailto:safhib.official@gmail.com">Contact</a>
 </footer>
 
 <script>
-/* -------------------------
-   Small helper: get element by id safely
-   ------------------------- */
-const $id = (id) => document.getElementById(id);
-
-/* =========================
-   1) Logo auto-detect & fallback
-   ========================= */
+/* ------------------------------
+   Countdown
+   ------------------------------ */
 (function () {
-  const img = $id('siteLogo');
+  const launchDate = new Date("2025-12-31T00:00:00").getTime();
+  const $ = (id) => document.getElementById(id);
+  function pad(n){ return String(n).padStart(2,"0"); }
+
+  function updateCountdown(){
+    const diff = launchDate - Date.now();
+    if (diff <= 0) {
+      const cd = $("countdown");
+      if (cd) cd.innerHTML = '<div class="count-box" style="padding:22px 30px"><div class="num">LIVE</div><div class="label">We Are Live</div></div>';
+      return;
+    }
+    const d = Math.floor(diff/86400000);
+    const h = Math.floor((diff/3600000)%24);
+    const m = Math.floor((diff/60000)%60);
+    const s = Math.floor((diff/1000)%60);
+    $("days").textContent = pad(d);
+    $("hours").textContent = pad(h);
+    $("minutes").textContent = pad(m);
+    $("seconds").textContent = pad(s);
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+})();
+
+/* ------------------------------
+   Notify form (localStorage)
+   ------------------------------ */
+(function () {
+  const form = document.getElementById('notifyForm');
+  const msg = document.getElementById('message');
+  if (!form) return;
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = (document.getElementById('email')||{}).value || '';
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!re.test(email.trim())) return showMsg('Please enter a valid email address.', 'error');
+    const list = JSON.parse(localStorage.getItem('safhib_subs')||'[]');
+    if (list.includes(email)) return showMsg("You're already on the list ✓", 'success');
+    list.push(email);
+    localStorage.setItem('safhib_subs', JSON.stringify(list));
+    form.reset();
+    showMsg("✓ Thank you! We'll keep you posted.", 'success');
+  });
+  function showMsg(text, type){
+    msg.textContent = text;
+    msg.className = 'message show ' + (type||'');
+    if (type === 'success') setTimeout(()=> msg.classList.remove('show'), 5000);
+  }
+})();
+
+/* ------------------------------
+   Theme toggle
+   ------------------------------ */
+(function () {
+  const btn = document.getElementById('themeToggle');
+  const icon = document.getElementById('themeIcon');
+  const sun = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>';
+  const moon = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+  function apply(t){
+    document.documentElement.setAttribute('data-theme', t);
+    icon.innerHTML = (t === 'dark') ? sun : moon;
+    localStorage.setItem('safhib_theme', t);
+  }
+  const saved = localStorage.getItem('safhib_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  apply(saved);
+  btn.addEventListener('click', ()=> {
+    const current = document.documentElement.getAttribute('data-theme');
+    apply(current === 'dark' ? 'light' : 'dark');
+  });
+})();
+
+/* ------------------------------
+   Footer year
+   ------------------------------ */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ------------------------------
+   Logo auto-detect & fallback
+   - Tries likely filenames/paths (png)
+   - Optionally set rawUrl to your raw.githubusercontent.com path
+   ------------------------------ */
+(function () {
+  const img = document.getElementById('siteLogo');
   if (!img) return;
 
-  // Candidate PNG (and common) paths — adjust if you know a different folder
-  const candidatePaths = [
-    'logo.png',
-    'Logo.png',
-    'logo.PNG',
-    'Logo.PNG',
-    './logo.png',
-    'images/logo.png',
-    'images/Logo.png',
-    'assets/logo.png',
-    'img/logo.png'
+  // If you prefer, set your exact raw GitHub URL here, e.g.:
+  // const rawUrl = 'https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/logo.png';
+  const rawUrl = ''; // <-- optional: fill if you want to force a URL
+
+  const candidates = [
+    'logo.png','Logo.png','logo.PNG','Logo.PNG',
+    './logo.png','/logo.png',
+    'images/logo.png','images/Logo.png',
+    'assets/logo.png','img/logo.png'
   ];
 
-  // Inline SVG placeholder (data URI) — used as last resort
-  const placeholderSVG = encodeURIComponent(
-    '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 200 200">' +
-      '<rect width="100%" height="100%" fill="%23ffffff"/>' +
-      '<circle cx="100" cy="80" r="48" fill="%230f1e3d" />' +
-      '<text x="100" y="128" font-family="Cormorant Garamond, serif" font-size="28" fill="%23c9a96e" text-anchor="middle">SAFHIB</text>' +
+  // Small inline SVG fallback
+  const placeholder = 'data:image/svg+xml;utf8,' + encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">' +
+      '<rect width="100%" height="100%" fill="#ffffff"/>' +
+      '<circle cx="100" cy="70" r="48" fill="#0f1e3d"/>' +
+      '<text x="100" y="135" font-family="Cormorant Garamond, serif" font-size="26" fill="#c9a96e" text-anchor="middle">SAFHIB</text>' +
     '</svg>'
   );
-  const placeholderDataUrl = 'data:image/svg+xml;utf8,' + placeholderSVG;
 
-  // Check if a URL exists (HEAD first)
-  async function exists(url) {
+  // quick HEAD checker (some hosts allow HEAD)
+  async function exists(url){
     try {
       const res = await fetch(url, { method: 'HEAD' });
       return res && res.ok;
     } catch (e) {
-      // fallback to GET (may be blocked by CORS, but raw.githubusercontent supports HEAD)
+      // fallback to GET if HEAD fails due to server restrictions/CORS
       try {
         const res2 = await fetch(url, { method: 'GET' });
         return res2 && res2.ok;
@@ -515,134 +345,39 @@ const $id = (id) => document.getElementById(id);
     }
   }
 
-  // Try current src first
-  (async () => {
-    const cur = img.getAttribute('src') || '';
-    try {
-      if (cur && await exists(cur)) {
-        return; // current src works
-      }
-    } catch (e) { /* ignore */ }
+  // onerror fallback
+  img.onerror = function () {
+    // If current src is not placeholder, replace with placeholder
+    if (!img.src.startsWith('data:image')) {
+      img.src = placeholder;
+      img.classList.add('small');
+    }
+  };
 
-    // Try candidate paths
-    for (const path of candidatePaths) {
-      try {
-        if (await exists(path)) {
-          img.src = path;
-          return;
-        }
-      } catch (e) { /* ignore */ }
+  // Main detection routine
+  (async function tryPaths() {
+    // If explicit rawUrl provided, try that first
+    if (rawUrl) {
+      if (await exists(rawUrl)) { img.src = rawUrl; return; }
     }
 
-    // Try GitHub raw URL option (optional): uncomment & set your repo if you want automatic raw usage
-    // const rawUrl = 'https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/logo.png';
-    // if (await exists(rawUrl)) { img.src = rawUrl; return; }
+    // If current src already works (fast check), keep it
+    const current = img.getAttribute('src') || '';
+    if (current) {
+      if (await exists(current)) return;
+    }
 
-    // Nothing found — show placeholder
-    img.src = placeholderDataUrl;
+    for (const p of candidates) {
+      try {
+        if (await exists(p)) { img.src = p; return; }
+      } catch (e) { /* ignore and continue */ }
+    }
 
-    // If browser fails to load any chosen src later, fallback to placeholder
-    img.onerror = () => { if (img.src !== placeholderDataUrl) img.src = placeholderDataUrl; };
+    // Nothing found: use placeholder
+    img.src = placeholder;
+    img.classList.add('small');
   })();
 })();
-
-/* =========================
-   2) Countdown
-   ========================= */
-(function () {
-  // set your launch date here
-  const launchDate = new Date("2025-12-31T00:00:00").getTime();
-
-  function pad(n) { return String(n).padStart(2, "0"); }
-  function updateCountdown() {
-    const diff = launchDate - Date.now();
-    const cd = $id('countdown');
-    if (diff <= 0) {
-      if (cd) cd.innerHTML = '<div class="count-box" style="padding:24px 36px"><div class="num">LIVE</div><div class="label">We Are Live</div></div>';
-      return;
-    }
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff / 3600000) % 24);
-    const m = Math.floor((diff / 60000) % 60);
-    const s = Math.floor((diff / 1000) % 60);
-
-    if ($id('days'))    $id('days').textContent    = pad(d);
-    if ($id('hours'))   $id('hours').textContent   = pad(h);
-    if ($id('minutes')) $id('minutes').textContent = pad(m);
-    if ($id('seconds')) $id('seconds').textContent = pad(s);
-  }
-
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-})();
-
-/* =========================
-   3) Notify form (localStorage)
-   ========================= */
-(function () {
-  const form = $id('notifyForm');
-  const messageEl = $id('message');
-  const emailInput = $id('email');
-  if (!form || !messageEl || !emailInput) return;
-
-  function showMessage(text, type) {
-    messageEl.textContent = text;
-    messageEl.className = `message show ${type}`;
-    if (type === 'success') setTimeout(() => messageEl.classList.remove('show'), 5000);
-  }
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = emailInput.value.trim();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      showMessage('Please enter a valid email address.', 'error');
-      return;
-    }
-    const subs = JSON.parse(localStorage.getItem('safhib_subs') || '[]');
-    if (subs.includes(email)) {
-      showMessage("You're already on the list ✓", 'success');
-      return;
-    }
-    subs.push(email);
-    localStorage.setItem('safhib_subs', JSON.stringify(subs));
-    showMessage("✓ Thank you! We'll keep you posted.", 'success');
-    form.reset();
-  });
-})();
-
-/* =========================
-   4) Theme toggle (respects system pref)
-   ========================= */
-(function () {
-  const themeToggle = $id('themeToggle');
-  const themeIcon = $id('themeIcon');
-  if (!themeToggle || !themeIcon) return;
-
-  const moonIcon = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
-  const sunIcon  = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>';
-
-  function applyTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    themeIcon.innerHTML = theme === 'dark' ? sunIcon : moonIcon;
-    localStorage.setItem('safhib_theme', theme);
-  }
-
-  const savedTheme = localStorage.getItem('safhib_theme') ||
-    (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-
-  applyTheme(savedTheme);
-  themeToggle.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-theme');
-    applyTheme(current === 'dark' ? 'light' : 'dark');
-  });
-})();
-
-/* =========================
-   Footer year
-   ========================= */
-(function(){ const y = new Date().getFullYear(); if ($id('year')) $id('year').textContent = y; })();
 </script>
-
 </body>
 </html>
