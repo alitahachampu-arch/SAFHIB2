@@ -394,6 +394,16 @@
     .notify button { padding: 16px; }
     .theme-toggle { top: 16px; right: 16px; }
   }
+
+  /* Utility: visually-hidden (used for accessibility) */
+  .sr-only {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
 </style>
 </head>
 <body>
@@ -402,15 +412,16 @@
 <div class="blob two" aria-hidden="true"></div>
 
 <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
-  <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <circle cx="12" cy="12" r="4"/>
     <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
   </svg>
 </button>
 
 <main>
-  <div class="logo-wrap">
-    <img src="logo.png" alt="SAFHIB Logo" />
+  <div class="logo-wrap" aria-hidden="false">
+    <!-- auto-detect script will swap src if needed -->
+    <img id="siteLogo" src="logo.png" alt="SAFHIB Logo" />
   </div>
 
   <h1 class="brand">SAFHIB</h1>
@@ -428,22 +439,22 @@
   <div class="notify">
     <p>Be the first to know when we launch.</p>
     <form id="notifyForm" novalidate>
-      <label for="email" class="sr-only" style="position:absolute;left:-9999px">Email address</label>
+      <label for="email" class="sr-only">Email address</label>
       <input type="email" id="email" name="email" placeholder="Enter your email" required autocomplete="email" />
       <button type="submit">Notify Me</button>
     </form>
-    <div class="message" id="message" role="status"></div>
+    <div class="message" id="message" role="status" aria-live="polite"></div>
   </div>
 
-  <div class="socials">
+  <div class="socials" aria-hidden="false">
     <a href="https://www.instagram.com/safhib_official/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.8.07 1.2.06 1.8.25 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.07 1.2.07 1.6.07 4.8s0 3.6-.07 4.8c-.06 1.2-.25 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.07-1.6.07-4.8.07s-3.6 0-4.8-.07c-1.2-.06-1.8-.25-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.8c.06-1.2.25-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.07-1 .05-1.6.22-2 .37-.5.2-.8.4-1.2.8-.4.4-.6.7-.8 1.2-.15.4-.32 1-.37 2C3 8.5 3 8.9 3 12s0 3.5.07 4.7c.05 1 .22 1.6.37 2 .2.5.4.8.8 1.2.4.4.7.6 1.2.8.4.15 1 .32 2 .37 1.2.07 1.6.07 4.7.07s3.5 0 4.7-.07c1-.05 1.6-.22 2-.37.5-.2.8-.4 1.2-.8.4-.4.6-.7.8-1.2.15-.4.32-1 .37-2 .07-1.2.07-1.6.07-4.7s0-3.5-.07-4.7c-.05-1-.22-1.6-.37-2-.2-.5-.4-.8-.8-1.2-.4-.4-.7-.6-1.2-.8-.4-.15-1-.32-2-.37C15.5 4 15.1 4 12 4zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 1.8a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2zm5.1-2.1a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.07 1.2.06 1.8.25 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.07 1.2.07 1.6.07 4.8s0 3.6-.07 4.8c-.06 1.2-.25 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.07-1.6.07-4.8.07s-3.6 0-4.8-.07c-1.2-.06-1.8-.25-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.8c.06-1.2.25-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.07-1 .05-1.6.22-2 .37-.5.2-.8.4-1.2.8-.4.4-.6.7-.8 1.2-.15.4-.32 1-.37 2C3 8.5 3 8.9 3 12s0 3.5.07 4.7c.05 1 .22 1.6.37 2 .2.5.4.8.8 1.2.4.4.7.6 1.2.8.4.15 1 .32 2 .37 1.2.07 1.6.07 4.7.07s3.5 0 4.7-.07c1-.05 1.6-.22 2-.37.5-.2.8-.4 1.2-.8.4-.4.6-.7.8-1.2.15-.4.32-1 .37-2 .07-1.2.07-1.6.07-4.7s0-3.5-.07-4.7c-.05-1-.22-1.6-.37-2-.2-.5-.4-.8-.8-1.2-.4-.4-.7-.6-1.2-.8-.4-.15-1-.32-2-.37C15.5 4 15.1 4 12 4zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 1.8a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2zm5.1-2.1a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg>
     </a>
     <a href="mailto:safhib.official@gmail.com" aria-label="Email us">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
     </a>
     <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.1-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15l-1.4 5.1 5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.1-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15l-1.4 5.1 5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
     </a>
   </div>
 </main>
@@ -453,18 +464,101 @@
 </footer>
 
 <script>
-  /* ============== Countdown ============== */
+/* -------------------------
+   Small helper: get element by id safely
+   ------------------------- */
+const $id = (id) => document.getElementById(id);
+
+/* =========================
+   1) Logo auto-detect & fallback
+   ========================= */
+(function () {
+  const img = $id('siteLogo');
+  if (!img) return;
+
+  // Candidate PNG (and common) paths — adjust if you know a different folder
+  const candidatePaths = [
+    'logo.png',
+    'Logo.png',
+    'logo.PNG',
+    'Logo.PNG',
+    './logo.png',
+    'images/logo.png',
+    'images/Logo.png',
+    'assets/logo.png',
+    'img/logo.png'
+  ];
+
+  // Inline SVG placeholder (data URI) — used as last resort
+  const placeholderSVG = encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 200 200">' +
+      '<rect width="100%" height="100%" fill="%23ffffff"/>' +
+      '<circle cx="100" cy="80" r="48" fill="%230f1e3d" />' +
+      '<text x="100" y="128" font-family="Cormorant Garamond, serif" font-size="28" fill="%23c9a96e" text-anchor="middle">SAFHIB</text>' +
+    '</svg>'
+  );
+  const placeholderDataUrl = 'data:image/svg+xml;utf8,' + placeholderSVG;
+
+  // Check if a URL exists (HEAD first)
+  async function exists(url) {
+    try {
+      const res = await fetch(url, { method: 'HEAD' });
+      return res && res.ok;
+    } catch (e) {
+      // fallback to GET (may be blocked by CORS, but raw.githubusercontent supports HEAD)
+      try {
+        const res2 = await fetch(url, { method: 'GET' });
+        return res2 && res2.ok;
+      } catch (e2) {
+        return false;
+      }
+    }
+  }
+
+  // Try current src first
+  (async () => {
+    const cur = img.getAttribute('src') || '';
+    try {
+      if (cur && await exists(cur)) {
+        return; // current src works
+      }
+    } catch (e) { /* ignore */ }
+
+    // Try candidate paths
+    for (const path of candidatePaths) {
+      try {
+        if (await exists(path)) {
+          img.src = path;
+          return;
+        }
+      } catch (e) { /* ignore */ }
+    }
+
+    // Try GitHub raw URL option (optional): uncomment & set your repo if you want automatic raw usage
+    // const rawUrl = 'https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/logo.png';
+    // if (await exists(rawUrl)) { img.src = rawUrl; return; }
+
+    // Nothing found — show placeholder
+    img.src = placeholderDataUrl;
+
+    // If browser fails to load any chosen src later, fallback to placeholder
+    img.onerror = () => { if (img.src !== placeholderDataUrl) img.src = placeholderDataUrl; };
+  })();
+})();
+
+/* =========================
+   2) Countdown
+   ========================= */
+(function () {
+  // set your launch date here
   const launchDate = new Date("2025-12-31T00:00:00").getTime();
-  const $ = (id) => document.getElementById(id);
 
   function pad(n) { return String(n).padStart(2, "0"); }
-
   function updateCountdown() {
     const diff = launchDate - Date.now();
-
+    const cd = $id('countdown');
     if (diff <= 0) {
-      $("countdown").innerHTML =
-        '<div class="count-box" style="padding:24px 36px"><div class="num">LIVE</div><div class="label">We Are Live</div></div>';
+      if (cd) cd.innerHTML = '<div class="count-box" style="padding:24px 36px"><div class="num">LIVE</div><div class="label">We Are Live</div></div>';
       return;
     }
     const d = Math.floor(diff / 86400000);
@@ -472,74 +566,82 @@
     const m = Math.floor((diff / 60000) % 60);
     const s = Math.floor((diff / 1000) % 60);
 
-    $("days").textContent    = pad(d);
-    $("hours").textContent   = pad(h);
-    $("minutes").textContent = pad(m);
-    $("seconds").textContent = pad(s);
+    if ($id('days'))    $id('days').textContent    = pad(d);
+    if ($id('hours'))   $id('hours').textContent   = pad(h);
+    if ($id('minutes')) $id('minutes').textContent = pad(m);
+    if ($id('seconds')) $id('seconds').textContent = pad(s);
   }
+
   updateCountdown();
   setInterval(updateCountdown, 1000);
+})();
 
-  /* ============== Notify form ============== */
-  const form = $("notifyForm");
-  const msg  = $("message");
-  const emailInput = $("email");
+/* =========================
+   3) Notify form (localStorage)
+   ========================= */
+(function () {
+  const form = $id('notifyForm');
+  const messageEl = $id('message');
+  const emailInput = $id('email');
+  if (!form || !messageEl || !emailInput) return;
 
   function showMessage(text, type) {
-    msg.textContent = text;
-    msg.className = `message show ${type}`;
-    if (type === "success") {
-      setTimeout(() => msg.classList.remove("show"), 5000);
-    }
+    messageEl.textContent = text;
+    messageEl.className = `message show ${type}`;
+    if (type === 'success') setTimeout(() => messageEl.classList.remove('show'), 5000);
   }
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = emailInput.value.trim();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
     if (!emailRegex.test(email)) {
-      showMessage("Please enter a valid email address.", "error");
+      showMessage('Please enter a valid email address.', 'error');
       return;
     }
-
-    // Store locally (replace with backend call later)
-    const subs = JSON.parse(localStorage.getItem("safhib_subs") || "[]");
+    const subs = JSON.parse(localStorage.getItem('safhib_subs') || '[]');
     if (subs.includes(email)) {
-      showMessage("You're already on the list ✓", "success");
+      showMessage("You're already on the list ✓", 'success');
       return;
     }
     subs.push(email);
-    localStorage.setItem("safhib_subs", JSON.stringify(subs));
-
-    showMessage("✓ Thank you! We'll keep you posted.", "success");
+    localStorage.setItem('safhib_subs', JSON.stringify(subs));
+    showMessage("✓ Thank you! We'll keep you posted.", 'success');
     form.reset();
   });
+})();
 
-  /* ============== Theme toggle ============== */
-  const themeToggle = $("themeToggle");
-  const themeIcon   = $("themeIcon");
+/* =========================
+   4) Theme toggle (respects system pref)
+   ========================= */
+(function () {
+  const themeToggle = $id('themeToggle');
+  const themeIcon = $id('themeIcon');
+  if (!themeToggle || !themeIcon) return;
 
   const moonIcon = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
   const sunIcon  = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>';
 
   function applyTheme(theme) {
-    document.documentElement.setAttribute("data-theme", theme);
-    themeIcon.innerHTML = theme === "dark" ? sunIcon : moonIcon;
-    localStorage.setItem("safhib_theme", theme);
+    document.documentElement.setAttribute('data-theme', theme);
+    themeIcon.innerHTML = theme === 'dark' ? sunIcon : moonIcon;
+    localStorage.setItem('safhib_theme', theme);
   }
 
-  const savedTheme = localStorage.getItem("safhib_theme") ||
-    (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  const savedTheme = localStorage.getItem('safhib_theme') ||
+    (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
   applyTheme(savedTheme);
-
-  themeToggle.addEventListener("click", () => {
-    const current = document.documentElement.getAttribute("data-theme");
-    applyTheme(current === "dark" ? "light" : "dark");
+  themeToggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    applyTheme(current === 'dark' ? 'light' : 'dark');
   });
+})();
 
-  /* ============== Footer year ============== */
-  $("year").textContent = new Date().getFullYear();
+/* =========================
+   Footer year
+   ========================= */
+(function(){ const y = new Date().getFullYear(); if ($id('year')) $id('year').textContent = y; })();
 </script>
 
 </body>
