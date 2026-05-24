@@ -5,207 +5,290 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>SAFHIB — Print Your Style · Launching Soon</title>
 <meta name="description" content="SAFHIB — Premium printed shirts & print-on-demand. Print Your Style, Wear Your Identity. Launching soon." />
-<link rel="icon" id="favicon" href="logo.png" />
+<meta name="theme-color" content="#0f1e3d" />
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Open Graph -->
+<meta property="og:title" content="SAFHIB — Print Your Style" />
+<meta property="og:description" content="Premium printed shirts & print-on-demand. Launching soon." />
+<meta property="og:image" content="logo.png" />
+<meta property="og:type" content="website" />
+
+<!-- Fallback favicon (script may update to actual detected logo) -->
+<link id="faviconLink" rel="icon" href="logo.png" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-  :root {
-    --navy:#0f1e3d; --gold:#c9a96e; --card-bg:rgba(255,255,255,0.55);
-    --card-border:rgba(15,30,61,0.08); --shadow-soft:0 20px 60px rgba(15,30,61,0.12);
+  :root{
+    --navy:#0f1e3d;
+    --navy-2:#1c2e5a;
+    --cream:#f6f2ea;
+    --gold:#c9a96e;
+    --glass: rgba(255,255,255,0.6);
+    --glass-border: rgba(15,30,61,0.08);
   }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%;font-family:'Inter',sans-serif;color:var(--navy)}
-  body{display:flex;flex-direction:column;align-items:stretch;background:linear-gradient(135deg,#f6f2ea 0%,#ede5d4 50%,#f6f2ea 100%);background-size:400% 400%;min-height:100vh}
-  main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 20px;text-align:center;position:relative;z-index:1}
-  .logo-wrap{width:180px;height:180px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-soft);margin-bottom:28px;padding:14px;position:relative}
-  .logo-wrap img{width:100%;height:100%;object-fit:contain}
-  .brand{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,9vw,5.5rem);letter-spacing:.36em;color:var(--navy);margin-bottom:8px;padding-left:.36em}
-  .tagline{font-size:.95rem;letter-spacing:.28em;text-transform:uppercase;color:var(--navy);opacity:.85;margin-bottom:32px}
-  .coming-soon{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3vw,2rem);font-style:italic;color:var(--navy);margin-bottom:28px}
-  .countdown{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:36px}
-  .count-box{background:var(--card-bg);backdrop-filter:blur(10px);border:1px solid var(--card-border);border-radius:12px;padding:14px 20px;min-width:78px}
-  .num{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--navy);font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
-  .label{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);opacity:.7;margin-top:6px}
-  .notify{width:100%;max-width:480px;margin-bottom:26px}
-  .notify form{display:flex;background:var(--card-bg);border:1px solid var(--card-border);border-radius:999px;overflow:hidden;box-shadow:var(--shadow-soft)}
-  .notify input{flex:1;border:none;padding:14px 18px;font-size:.95rem;background:transparent;color:var(--navy);outline:none}
-  .notify button{border:none;background:var(--navy);color:#f6f2ea;padding:0 22px;text-transform:uppercase;letter-spacing:.12em;cursor:pointer}
-  .message{font-size:.88rem;margin-top:12px;min-height:1.2em;opacity:0;transition:opacity .2s}
-  .message.show{opacity:1}
-  .socials{display:flex;gap:12px;margin-top:8px}
-  footer{text-align:center;padding:18px;font-size:.78rem;color:var(--navy);opacity:.7}
-  @media(max-width:480px){ .logo-wrap{width:140px;height:140px} .brand{font-size:4rem} .count-box{padding:10px 14px} .num{font-size:1.6rem} .notify form{flex-direction:column;border-radius:14px} .notify button{padding:12px} }
-  /* visually-hidden for accessibility labels */
-  .sr-only{position:absolute!important;clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px;overflow:hidden;white-space:nowrap}
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:var(--navy);background:linear-gradient(135deg,#f6f2ea 0%,#ede5d4 50%,#f6f2ea 100%);-webkit-font-smoothing:antialiased}
+  .wrap{min-height:100vh;display:flex;flex-direction:column}
+  header{display:flex;justify-content:flex-end;padding:18px 28px}
+  .theme-toggle{background:transparent;border:1px solid var(--glass-border);padding:8px;border-radius:10px;cursor:pointer}
+  main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center;position:relative}
+  /* Decorative blurred blobs */
+  .blob{position:absolute;border-radius:50%;filter:blur(110px);opacity:.22;pointer-events:none}
+  .blob.blob1{width:420px;height:420px;background:var(--navy);left:-120px;top:-120px}
+  .blob.blob2{width:360px;height:360px;background:var(--gold);right:-120px;bottom:-120px}
+  /* Logo */
+  .logo-wrap{width:170px;height:170px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;padding:12px;box-shadow:0 20px 60px rgba(15,30,61,0.12);margin-bottom:24px;position:relative}
+  .logo-wrap img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+  /* Brand */
+  .brand{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(40px,8vw,72px);letter-spacing:.36em;margin:0 0 8px;background:linear-gradient(135deg,var(--navy),var(--navy-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .tagline{font-size:14px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:22px;color:var(--navy);opacity:.9}
+  .coming{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,28px);margin-bottom:22px;color:var(--navy);font-style:italic}
+  /* Countdown */
+  .countdown{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:26px}
+  .count-box{background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--glass-border);padding:14px 18px;border-radius:12px;min-width:82px}
+  .count-box .num{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--navy);line-height:1}
+  .count-box .label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);opacity:.75;margin-top:6px}
+  /* Notify */
+  .notify{max-width:520px;width:100%;margin:0 auto 26px}
+  .notify p{margin:0 0 10px;color:var(--navy);opacity:.85}
+  .notify form{display:flex;border-radius:999px;overflow:hidden;background:#fff;border:1px solid var(--glass-border);box-shadow:0 10px 30px rgba(15,30,61,0.08)}
+  .notify input{flex:1;padding:14px 18px;border:0;font-size:14px;outline:none}
+  .notify button{background:var(--navy);color:var(--cream);border:0;padding:0 24px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+  .notify .message{height:20px;margin-top:10px;font-size:13px;opacity:0;transition:opacity .18s}
+  .notify .message.show{opacity:1}
+  /* Actions */
+  .actions{display:flex;gap:12px;align-items:center;justify-content:center;margin-bottom:18px;flex-wrap:wrap}
+  .btn{padding:12px 22px;border-radius:12px;border:0;cursor:pointer;font-weight:600}
+  .btn-ig{background:linear-gradient(90deg,var(--navy),var(--navy-2));color:var(--cream)}
+  .btn-secondary{background:transparent;border:1px solid var(--glass-border);color:var(--navy)}
+  /* Socials & footer */
+  .socials{display:flex;gap:12px;justify-content:center;margin-top:6px}
+  .socials a{width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--navy);color:var(--cream);text-decoration:none}
+  footer{padding:20px;text-align:center;font-size:12px;color:var(--navy);opacity:.7}
+  /* Responsive */
+  @media (max-width:520px){.brand{font-size:40px}.logo-wrap{width:140px;height:140px}}
+  /* Accessible hidden label */
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 </style>
 </head>
 <body>
+<div class="wrap">
+  <header>
+    <button class="theme-toggle" id="themeToggle" aria-pressed="false" title="Toggle theme">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"></circle></svg>
+    </button>
+  </header>
 
-<main>
-  <div class="logo-wrap" aria-hidden="false">
-    <!-- Logo element: script below will set the correct src -->
-    <img id="siteLogo" src="logo.png" alt="SAFHIB logo" />
-  </div>
+  <main role="main" aria-labelledby="brandTitle">
+    <div class="blob blob1" aria-hidden="true"></div>
+    <div class="blob blob2" aria-hidden="true"></div>
 
-  <h1 class="brand">SAFHIB</h1>
-  <p class="tagline">Print Your Style · Wear Your Identity</p>
-  <h2 class="coming-soon">Something Beautiful is Coming Soon</h2>
+    <div class="logo-wrap" aria-hidden="false">
+      <img id="siteLogo" src="logo.png" alt="SAFHIB logo" />
+    </div>
 
-  <div class="countdown" id="countdown" aria-live="polite">
-    <div class="count-box"><div class="num" id="days">00</div><div class="label">Days</div></div>
-    <div class="count-box"><div class="num" id="hours">00</div><div class="label">Hours</div></div>
-    <div class="count-box"><div class="num" id="minutes">00</div><div class="label">Minutes</div></div>
-    <div class="count-box"><div class="num" id="seconds">00</div><div class="label">Seconds</div></div>
-  </div>
+    <h1 id="brandTitle" class="brand">SAFHIB</h1>
+    <div class="tagline">Print Your Style · Wear Your Identity</div>
+    <div class="coming">Launching soon — join our waitlist</div>
 
-  <div class="notify">
-    <p>Be the first to know when we launch.</p>
-    <form id="notifyForm" novalidate>
-      <label for="email" class="sr-only">Email address</label>
-      <input id="email" type="email" name="email" placeholder="Enter your email" required autocomplete="email" />
-      <button type="submit">Notify Me</button>
-    </form>
-    <div id="formMsg" class="message" role="status" aria-live="polite"></div>
-  </div>
+    <div class="countdown" id="countdown" aria-live="polite" aria-label="Countdown">
+      <div class="count-box"><div class="num" id="days">00</div><div class="label">Days</div></div>
+      <div class="count-box"><div class="num" id="hours">00</div><div class="label">Hours</div></div>
+      <div class="count-box"><div class="num" id="minutes">00</div><div class="label">Minutes</div></div>
+      <div class="count-box"><div class="num" id="seconds">00</div><div class="label">Seconds</div></div>
+    </div>
 
-  <div class="socials" aria-hidden="false">
-    <a href="https://www.instagram.com/safhib_official/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
-    <a href="mailto:safhib.official@gmail.com" aria-label="Email">✉</a>
-  </div>
-</main>
+    <div class="notify" aria-hidden="false">
+      <p>Be the first to know when SAFHIB launches. We won't share your email.</p>
+      <form id="notifyForm" novalidate>
+        <label for="email" class="sr-only">Email address</label>
+        <input id="email" name="email" type="email" placeholder="Enter your email" autocomplete="email" required />
+        <button type="submit">Notify Me</button>
+      </form>
+      <div id="formMessage" class="message" role="status" aria-live="polite"></div>
+    </div>
 
-<footer>© <span id="year"></span> SAFHIB · All rights reserved</footer>
+    <div class="actions">
+      <!-- Buy/Shop redirects to Instagram -->
+      <button class="btn btn-ig" id="shopBtn" aria-label="Shop on Instagram">Shop on Instagram</button>
+      <a class="btn btn-secondary" href="https://www.instagram.com/safhib_official/" target="_blank" rel="noopener">Follow @safhib_official</a>
+    </div>
+
+    <div class="socials" aria-hidden="false">
+      <a href="https://www.instagram.com/safhib_official/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.8.07 1.2.06 1.8.25 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.07 1.2.07 1.6.07 4.8s0 3.6-.07 4.8c-.06 1.2-.25 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.07-1.6.07-4.8.07s-3.6 0-4.8-.07c-1.2-.06-1.8-.25-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.8c.06-1.2.25-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zM12 7.1a4.9 4.9 0 110 9.8 4.9 4.9 0 010-9.8z"/></svg>
+      </a>
+      <a href="mailto:safhib.official@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    © <span id="year">2025</span> SAFHIB · All Rights Reserved · <a href="https://www.instagram.com/safhib_official/" target="_blank" rel="noopener">Instagram</a>
+  </footer>
+</div>
 
 <script>
-/* ---------- Logo auto-detect (tries common filenames & folders) ---------- */
-(function () {
-  const img = document.getElementById('siteLogo');
-  const favicon = document.getElementById('favicon');
-  if (!img) return;
+/* ============================
+   1) Logo auto-detect with JavaScript
+   Tries common filenames/paths (case variations). If none found,
+   replaces image with an inline SVG fallback.
+   ============================ */
+(function detectLogo(){
+  const imgEl = document.getElementById('siteLogo');
+  const favicon = document.getElementById('faviconLink');
+  if(!imgEl) return;
 
-  // Candidate paths to try (order matters). Add any custom paths you use.
   const candidates = [
-    'logo.png', 'Logo.png', 'logo.PNG', 'Logo.PNG',
-    'logo.jpg', 'logo.jpeg', 'Logo.jpg', 'Logo.jpeg',
-    'images/logo.png', 'images/Logo.png',
-    'assets/logo.png', 'assets/logo.jpg',
-    './logo.png', './logo.jpg'
+    'logo.png','Logo.png','logo.PNG','Logo.PNG',
+    'logo.jpg','Logo.JPG','logo.jpeg','images/logo.png','assets/logo.png','./logo.png'
   ];
 
-  // Inline SVG fallback (data URL)
-  const placeholderSVG = encodeURIComponent(
-    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">' +
-      '<rect width="100%" height="100%" fill="%23ffffff"/>' +
-      '<circle cx="100" cy="72" r="48" fill="%230f1e3d"/>' +
-      '<text x="100" y="136" font-family="Cormorant Garamond, serif" font-size="24" fill="%23c9a96e" text-anchor="middle">SAFHIB</text>' +
-    '</svg>'
-  );
-  const placeholder = 'data:image/svg+xml;utf8,' + placeholderSVG;
-
-  let idx = 0;
-
-  function tryNext() {
-    if (idx >= candidates.length) {
-      // nothing found -> show placeholder
-      setLogo(placeholder, true);
+  // Try each candidate by creating Image() — reliable across origins.
+  (function tryOne(i){
+    if(i>=candidates.length){
+      // fallback: simple inline SVG data URL
+      const svg = `
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' width='400' height='400'>
+          <rect width='100%' height='100%' fill='#ffffff'/>
+          <circle cx='100' cy='70' r='46' fill='#0f1e3d'/>
+          <text x='100' y='135' font-family='Cormorant Garamond, serif' font-size='26' fill='#c9a96e' text-anchor='middle'>SAFHIB</text>
+        </svg>`;
+      const dataUrl = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+      imgEl.src = dataUrl;
+      if(favicon) favicon.href = dataUrl;
       return;
     }
-    const path = candidates[idx++];
-    // attempt to load via Image() to avoid CORS/HEAD issues
+
+    const path = candidates[i];
     const tester = new Image();
-    // cache-buster to avoid stale cached 404 on GH Pages
-    tester.src = path + '?v=' + (new Date()).getTime();
-    tester.onload = function () {
-      setLogo(path);
+    tester.onload = function(){
+      // real image exists — use it
+      imgEl.src = path;
+      if(favicon) favicon.href = path;
     };
-    tester.onerror = function () {
-      tryNext();
+    tester.onerror = function(){
+      tryOne(i+1);
     };
-    // safety: if neither onload nor onerror fire after 3s, move on
-    setTimeout(function () {
-      if (!tester.complete) tryNext();
-    }, 3000);
-  }
-
-  function setLogo(src, isPlaceholder) {
-    img.src = src;
-    // update favicon if it's a real file (not placeholder)
-    if (!isPlaceholder && favicon) {
-      favicon.href = src;
-    }
-    img.alt = isPlaceholder ? 'SAFHIB' : 'SAFHIB logo';
-    img.setAttribute('data-logo-src', src);
-    // add a gentle visual indication if placeholder used
-    if (isPlaceholder) img.style.background = '#ffffff';
-  }
-
-  // If the current src already loads, do nothing; otherwise start trying
-  const initial = img.getAttribute('src') || '';
-  const initialTester = new Image();
-  initialTester.onload = function () { /* ok */ };
-  initialTester.onerror = function () { tryNext(); };
-  initialTester.src = initial + '?v=' + (new Date()).getTime();
-
-  // If there was no initial src, start immediately
-  if (!initial) tryNext();
+    // Start attempt
+    tester.src = path;
+  })(0);
 })();
 
-/* ---------- Simple countdown (example target) ---------- */
-(function () {
-  const launch = new Date('2025-12-31T00:00:00Z').getTime();
-  const dEl = document.getElementById('days');
-  const hEl = document.getElementById('hours');
-  const mEl = document.getElementById('minutes');
-  const sEl = document.getElementById('seconds');
-  function tick() {
+/* ============================
+   2) Countdown (set launch date here)
+   ============================ */
+(function countdown(){
+  // Set your desired launch date/time (ISO format)
+  const launch = new Date('2025-12-31T00:00:00').getTime();
+  const elDays = document.getElementById('days');
+  const elHours = document.getElementById('hours');
+  const elMins = document.getElementById('minutes');
+  const elSecs = document.getElementById('seconds');
+
+  function pad(n){ return n.toString().padStart(2,'0'); }
+
+  function update(){
     const now = Date.now();
-    let diff = Math.max(0, launch - now);
-    const d = Math.floor(diff / (1000*60*60*24));
-    diff -= d * (1000*60*60*24);
-    const h = Math.floor(diff / (1000*60*60));
-    diff -= h * (1000*60*60);
-    const m = Math.floor(diff / (1000*60));
-    const s = Math.floor((diff / 1000) % 60);
-    if (dEl) dEl.textContent = String(d).padStart(2,'0');
-    if (hEl) hEl.textContent = String(h).padStart(2,'0');
-    if (mEl) mEl.textContent = String(m).padStart(2,'0');
-    if (sEl) sEl.textContent = String(s).padStart(2,'0');
-    if (launch - Date.now() <= 0) clearInterval(timer);
-  }
-  tick();
-  const timer = setInterval(tick, 1000);
-})();
-
-/* ---------- Simple form behavior using localStorage ---------- */
-(function () {
-  const form = document.getElementById('notifyForm') || document.getElementById('notifyForm');
-  const email = document.getElementById('email');
-  const msg = document.getElementById('formMsg');
-  if (!form || !email || !msg) return;
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const val = (email.value || '').trim();
-    if (!val || !val.includes('@')) {
-      msg.textContent = 'Please enter a valid email.';
-      msg.classList.add('show');
-      msg.style.color = '#c0392b';
+    const d = Math.max(0, launch - now);
+    if(d<=0){
+      document.getElementById('countdown').innerHTML = '<div class="count-box"><div class="num">LIVE</div><div class="label">We are live</div></div>';
+      clearInterval(timer);
       return;
     }
-    // store locally (replace with real endpoint later)
-    const list = JSON.parse(localStorage.getItem('safhib_waitlist') || '[]');
-    if (!list.includes(val)) {
-      list.push(val);
-      localStorage.setItem('safhib_waitlist', JSON.stringify(list));
-    }
-    email.value = '';
-    msg.textContent = 'Thanks — we will notify you at launch.';
+    const days = Math.floor(d / (1000*60*60*24));
+    const hours = Math.floor((d / (1000*60*60)) % 24);
+    const mins = Math.floor((d / (1000*60)) % 60);
+    const secs = Math.floor((d / 1000) % 60);
+    if(elDays) elDays.textContent = pad(days);
+    if(elHours) elHours.textContent = pad(hours);
+    if(elMins) elMins.textContent = pad(mins);
+    if(elSecs) elSecs.textContent = pad(secs);
+  }
+  update();
+  const timer = setInterval(update, 1000);
+})();
+
+/* ============================
+   3) Notify form — stores email locally (simple)
+   Replace with your email service later.
+   ============================ */
+(function notifyForm(){
+  const form = document.getElementById('notifyForm');
+  const input = document.getElementById('email');
+  const msg = document.getElementById('formMessage');
+  const STORAGE_KEY = 'safhib_waitlist';
+
+  function show(text, ok){
+    msg.textContent = text;
     msg.classList.add('show');
-    msg.style.color = '';
+    msg.style.color = ok ? 'var(--navy)' : '#c0392b';
+    setTimeout(()=> msg.classList.remove('show'), 5000);
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const val = (input.value || '').trim();
+    if(!val || !val.includes('@')){
+      show('Please enter a valid email.', false);
+      return;
+    }
+    // Save locally (simple dedupe)
+    try {
+      const list = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      if(list.includes(val)){
+        show('You are already on the list — thanks!', true);
+      } else {
+        list.push(val);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+        show('Thanks — we\'ll email you at launch!', true);
+        input.value = '';
+      }
+    } catch(err){
+      console.error(err);
+      show('Could not save — try again later.', false);
+    }
   });
 })();
 
-/* ---------- Year in footer ---------- */
+/* ============================
+   4) Shop button: redirect to Instagram
+   ============================ */
+document.getElementById('shopBtn').addEventListener('click', function(){
+  window.open('https://www.instagram.com/safhib_official/', '_blank', 'noopener');
+});
+
+/* ============================
+   5) Theme toggle (simple dark mode)
+   ============================ */
+(function themeToggle(){
+  const btn = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  const stored = localStorage.getItem('safhib_theme');
+  if(stored === 'dark') root.setAttribute('data-theme','dark');
+
+  btn.addEventListener('click', function(){
+    const cur = root.getAttribute('data-theme');
+    if(cur === 'dark'){
+      root.removeAttribute('data-theme');
+      localStorage.setItem('safhib_theme','light');
+      btn.setAttribute('aria-pressed','false');
+    } else {
+      root.setAttribute('data-theme','dark');
+      localStorage.setItem('safhib_theme','dark');
+      btn.setAttribute('aria-pressed','true');
+    }
+  });
+})();
+
+/* ============================
+   Small housekeeping
+   ============================ */
 document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
