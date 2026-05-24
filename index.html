@@ -3,186 +3,53 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="theme-color" content="#0f1e3d" />
 <title>SAFHIB — Print Your Style · Launching Soon</title>
-
 <meta name="description" content="SAFHIB — Premium printed shirts & print-on-demand. Print Your Style, Wear Your Identity. Launching soon." />
-<meta name="keywords" content="SAFHIB, printed shirts, print on demand, custom apparel, premium fashion" />
-<meta name="author" content="SAFHIB" />
+<link rel="icon" id="favicon" href="logo.png" />
 
-<!-- Social preview (can update to full URL if needed) -->
-<meta property="og:type" content="website" />
-<meta property="og:title" content="SAFHIB — Print Your Style" />
-<meta property="og:description" content="Premium printed shirts & print-on-demand. Launching soon." />
-<meta property="og:image" content="logo.png" />
-<meta property="og:url" content="https://safhib.com/" />
-<meta name="twitter:card" content="summary_large_image" />
-
-<link rel="icon" href="logo.png" />
-<link rel="apple-touch-icon" href="logo.png" />
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
   :root {
-    --navy: #0f1e3d;
-    --navy-light: #1c2e5a;
-    --cream: #f6f2ea;
-    --gold: #c9a96e;
-    --text: #0f1e3d;
-    --bg1: #f6f2ea;
-    --bg2: #ede5d4;
-    --card-bg: rgba(255,255,255,0.56);
-    --card-border: rgba(15,30,61,0.08);
-    --shadow-soft: 0 20px 60px rgba(15,30,61,0.12);
+    --navy:#0f1e3d; --gold:#c9a96e; --card-bg:rgba(255,255,255,0.55);
+    --card-border:rgba(15,30,61,0.08); --shadow-soft:0 20px 60px rgba(15,30,61,0.12);
   }
-
-  [data-theme="dark"] {
-    --navy: #f6f2ea;
-    --cream: #0f1e3d;
-    --bg1: #0a1530;
-    --bg2: #1c2e5a;
-    --card-bg: rgba(255,255,255,0.05);
-    --card-border: rgba(255,255,255,0.08);
-    --shadow-soft: 0 20px 60px rgba(0,0,0,0.5);
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    min-height: 100vh;
-    font-family: 'Inter', sans-serif;
-    color: var(--text);
-    background: linear-gradient(135deg,var(--bg1) 0%,var(--bg2) 50%,var(--bg1) 100%);
-    background-size: 400% 400%;
-    animation: gradientShift 22s ease infinite;
-    display:flex; flex-direction:column;
-    overflow-x:hidden;
-  }
-  @keyframes gradientShift { 0%,100%{background-position:0% 50%}50%{background-position:100% 50%} }
-
-  /* Decorative blobs */
-  .blob{ position:fixed; border-radius:50%; filter:blur(120px); opacity:0.22; z-index:0; pointer-events:none; }
-  .blob.one{ width:450px;height:450px;background:var(--navy); top:-120px; left:-120px; }
-  .blob.two{ width:380px;height:380px;background:var(--gold); bottom:-120px; right:-120px; }
-
-  /* Theme toggle */
-  .theme-toggle {
-    position: fixed; top: 20px; right: 20px; z-index: 10;
-    width:44px;height:44px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    background:var(--card-bg); border:1px solid var(--card-border);
-    backdrop-filter: blur(10px); cursor:pointer;
-  }
-
-  main {
-    flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
-    padding: 60px 20px 40px; text-align:center; position:relative; z-index:1;
-  }
-
-  /* Logo wrapper: circular badge with padding; image fits inside and keeps its aspect */
-  .logo-wrap {
-    width: 185px; height: 185px;
-    background: #fff; border-radius: 50%;
-    display:flex; align-items:center; justify-content:center;
-    box-shadow: var(--shadow-soft); margin-bottom: 28px; padding: 14px; position:relative;
-  }
-  .logo-wrap::before{
-    content:""; position:absolute; inset:-6px; border-radius:50%;
-    background: linear-gradient(135deg,var(--gold),transparent); opacity:0.45; z-index:-1;
-  }
-  .logo-wrap img {
-    width:100%; height:100%; object-fit:contain; display:block;
-  }
-  /* If the logo is narrow or wide, keep it visually centered with max auto sizes */
-  .logo-wrap img.small { max-width: 78%; max-height: 78%; }
-
-  .brand {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight:700;
-    font-size: clamp(3.5rem, 10vw, 5.5rem);
-    color: var(--navy);
-    letter-spacing: 0.38em;
-    margin-bottom:6px;
-    padding-left:0.38em;
-    background: linear-gradient(135deg, var(--navy), var(--navy-light));
-    -webkit-background-clip: text; background-clip:text; -webkit-text-fill-color:transparent;
-  }
-
-  .tagline {
-    font-size: clamp(0.8rem,2vw,1rem);
-    letter-spacing: 0.28em; text-transform:uppercase; color:var(--navy); opacity:0.78;
-    margin-bottom:32px;
-  }
-  .tagline::before,.tagline::after{ content:"—"; margin:0 10px; color:var(--gold); }
-
-  .coming-soon {
-    font-family:'Cormorant Garamond',serif; font-style:italic;
-    font-size: clamp(1.5rem,4vw,2.2rem); color:var(--navy); margin-bottom:28px;
-  }
-  .coming-soon::after{ content:""; display:block; width:60px; height:1px; background:var(--gold); margin:12px auto 0;}
-
-  /* Countdown */
-  .countdown { display:flex; gap:16px; margin-bottom:36px; flex-wrap:wrap; justify-content:center; }
-  .count-box {
-    background: var(--card-bg); backdrop-filter:blur(12px);
-    border:1px solid var(--card-border); border-radius:12px; padding:16px 22px; min-width:84px;
-  }
-  .count-box .num { font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:700; color:var(--navy); line-height:1; font-variant-numeric:tabular-nums; }
-  .count-box .label { font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--navy); opacity:0.72; margin-top:6px; }
-
-  /* Notify form */
-  .notify { width:100%; max-width:480px; margin-bottom:28px; }
-  .notify p { color:var(--navy); opacity:0.86; margin-bottom:12px; }
-  .notify form { display:flex; background:var(--card-bg); border:1px solid var(--card-border); border-radius:50px; overflow:hidden; box-shadow:var(--shadow-soft); }
-  .notify input { flex:1; padding:14px 20px; border:none; outline:none; font-size:0.92rem; background:transparent; color:var(--navy); }
-  .notify button { border:none; background:var(--navy); color:var(--cream); padding:0 26px; text-transform:uppercase; letter-spacing:0.15em; cursor:pointer; font-weight:600; }
-  .message { font-size:0.85rem; margin-top:12px; min-height:1.1em; opacity:0; transform:translateY(-4px); transition:all .25s ease; }
-  .message.show { opacity:1; transform:translateY(0); }
-  .message.success { color:var(--navy); } .message.error { color:#c0392b; }
-
-  .socials { display:flex; gap:14px; margin-top:10px; justify-content:center; }
-  .socials a { width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--navy);color:var(--cream);text-decoration:none; }
-  .socials a:hover { transform:translateY(-4px); background:var(--gold); box-shadow:0 10px 20px rgba(201,169,110,0.28); }
-
-  footer{ text-align:center; padding:22px 18px; font-size:0.75rem; color:var(--navy); opacity:0.64; letter-spacing:0.15em; text-transform:uppercase; }
-
-  @media (max-width:480px){
-    .logo-wrap{ width:140px; height:140px; }
-    .brand{ font-size: clamp(2.2rem, 16vw, 4rem); letter-spacing:0.24em; }
-    .count-box{ padding:12px 16px; min-width:68px; }
-    .notify form{ flex-direction:column; border-radius:16px; }
-    .notify button{ padding:14px 18px; width:100%; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;font-family:'Inter',sans-serif;color:var(--navy)}
+  body{display:flex;flex-direction:column;align-items:stretch;background:linear-gradient(135deg,#f6f2ea 0%,#ede5d4 50%,#f6f2ea 100%);background-size:400% 400%;min-height:100vh}
+  main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 20px;text-align:center;position:relative;z-index:1}
+  .logo-wrap{width:180px;height:180px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-soft);margin-bottom:28px;padding:14px;position:relative}
+  .logo-wrap img{width:100%;height:100%;object-fit:contain}
+  .brand{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,9vw,5.5rem);letter-spacing:.36em;color:var(--navy);margin-bottom:8px;padding-left:.36em}
+  .tagline{font-size:.95rem;letter-spacing:.28em;text-transform:uppercase;color:var(--navy);opacity:.85;margin-bottom:32px}
+  .coming-soon{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3vw,2rem);font-style:italic;color:var(--navy);margin-bottom:28px}
+  .countdown{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:36px}
+  .count-box{background:var(--card-bg);backdrop-filter:blur(10px);border:1px solid var(--card-border);border-radius:12px;padding:14px 20px;min-width:78px}
+  .num{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--navy);font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+  .label{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);opacity:.7;margin-top:6px}
+  .notify{width:100%;max-width:480px;margin-bottom:26px}
+  .notify form{display:flex;background:var(--card-bg);border:1px solid var(--card-border);border-radius:999px;overflow:hidden;box-shadow:var(--shadow-soft)}
+  .notify input{flex:1;border:none;padding:14px 18px;font-size:.95rem;background:transparent;color:var(--navy);outline:none}
+  .notify button{border:none;background:var(--navy);color:#f6f2ea;padding:0 22px;text-transform:uppercase;letter-spacing:.12em;cursor:pointer}
+  .message{font-size:.88rem;margin-top:12px;min-height:1.2em;opacity:0;transition:opacity .2s}
+  .message.show{opacity:1}
+  .socials{display:flex;gap:12px;margin-top:8px}
+  footer{text-align:center;padding:18px;font-size:.78rem;color:var(--navy);opacity:.7}
+  @media(max-width:480px){ .logo-wrap{width:140px;height:140px} .brand{font-size:4rem} .count-box{padding:10px 14px} .num{font-size:1.6rem} .notify form{flex-direction:column;border-radius:14px} .notify button{padding:12px} }
+  /* visually-hidden for accessibility labels */
+  .sr-only{position:absolute!important;clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px;overflow:hidden;white-space:nowrap}
 </style>
 </head>
 <body>
 
-<div class="blob one" aria-hidden="true"></div>
-<div class="blob two" aria-hidden="true"></div>
-
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
-  <svg id="themeIcon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="12" cy="12" r="4"></circle>
-    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
-  </svg>
-</button>
-
 <main>
   <div class="logo-wrap" aria-hidden="false">
-    <!-- id used by script; src initially logo.png -->
-    <img id="siteLogo" src="logo.png" alt="SAFHIB Logo" />
+    <!-- Logo element: script below will set the correct src -->
+    <img id="siteLogo" src="logo.png" alt="SAFHIB logo" />
   </div>
 
   <h1 class="brand">SAFHIB</h1>
   <p class="tagline">Print Your Style · Wear Your Identity</p>
-
   <h2 class="coming-soon">Something Beautiful is Coming Soon</h2>
 
   <div class="countdown" id="countdown" aria-live="polite">
@@ -195,189 +62,151 @@
   <div class="notify">
     <p>Be the first to know when we launch.</p>
     <form id="notifyForm" novalidate>
-      <label for="email" style="position:absolute;left:-9999px">Email address</label>
-      <input type="email" id="email" name="email" placeholder="Enter your email" required autocomplete="email" />
+      <label for="email" class="sr-only">Email address</label>
+      <input id="email" type="email" name="email" placeholder="Enter your email" required autocomplete="email" />
       <button type="submit">Notify Me</button>
     </form>
-    <div class="message" id="message" role="status" aria-live="polite"></div>
+    <div id="formMsg" class="message" role="status" aria-live="polite"></div>
   </div>
 
   <div class="socials" aria-hidden="false">
-    <a href="https://www.instagram.com/safhib_official/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.2c3.2 0 3.6 0 4.8.07 1.2.06 1.8.25 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.07 1.2.07 1.6.07 4.8s0 3.6-.07 4.8c-.06 1.2-.25 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.07-1.6.07-4.8.07s-3.6 0-4.8-.07c-1.2-.06-1.8-.25-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.8c.06-1.2.25-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.07-1 .05-1.6.22-2 .37-.5.2-.8.4-1.2.8-.4.4-.6.7-.8 1.2-.15.4-.32 1-.37 2C3 8.5 3 8.9 3 12s0 3.5.07 4.7c.05 1 .22 1.6.37 2 .2.5.4.8.8 1.2.4.4.7.6 1.2.8.4.15 1 .32 2 .37 1.2.07 1.6.07 4.7.07s3.5 0 4.7-.07c1-.05 1.6-.22 2-.37.5-.2.8-.4 1.2-.8.4-.4.6-.7.8-1.2.15-.4.32-1 .37-2 .07-1.2.07-1.6.07-4.7s0-3.5-.07-4.7c-.05-1-.22-1.6-.37-2-.2-.5-.4-.8-.8-1.2-.4-.4-.7-.6-1.2-.8-.4-.15-1-.32-2-.37C15.5 4 15.1 4 12 4zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 1.8a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2zm5.1-2.1a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg>
-    </a>
-    <a href="mailto:safhib.official@gmail.com" aria-label="Email">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-    </a>
-    <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.1-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15l-1.4 5.1 5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
-    </a>
+    <a href="https://www.instagram.com/safhib_official/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
+    <a href="mailto:safhib.official@gmail.com" aria-label="Email">✉</a>
   </div>
 </main>
 
-<footer>
-  © <span id="year"></span> SAFHIB · All Rights Reserved · <a href="mailto:safhib.official@gmail.com">Contact</a>
-</footer>
+<footer>© <span id="year"></span> SAFHIB · All rights reserved</footer>
 
 <script>
-/* ------------------------------
-   Countdown
-   ------------------------------ */
-(function () {
-  const launchDate = new Date("2025-12-31T00:00:00").getTime();
-  const $ = (id) => document.getElementById(id);
-  function pad(n){ return String(n).padStart(2,"0"); }
-
-  function updateCountdown(){
-    const diff = launchDate - Date.now();
-    if (diff <= 0) {
-      const cd = $("countdown");
-      if (cd) cd.innerHTML = '<div class="count-box" style="padding:22px 30px"><div class="num">LIVE</div><div class="label">We Are Live</div></div>';
-      return;
-    }
-    const d = Math.floor(diff/86400000);
-    const h = Math.floor((diff/3600000)%24);
-    const m = Math.floor((diff/60000)%60);
-    const s = Math.floor((diff/1000)%60);
-    $("days").textContent = pad(d);
-    $("hours").textContent = pad(h);
-    $("minutes").textContent = pad(m);
-    $("seconds").textContent = pad(s);
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-})();
-
-/* ------------------------------
-   Notify form (localStorage)
-   ------------------------------ */
-(function () {
-  const form = document.getElementById('notifyForm');
-  const msg = document.getElementById('message');
-  if (!form) return;
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = (document.getElementById('email')||{}).value || '';
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!re.test(email.trim())) return showMsg('Please enter a valid email address.', 'error');
-    const list = JSON.parse(localStorage.getItem('safhib_subs')||'[]');
-    if (list.includes(email)) return showMsg("You're already on the list ✓", 'success');
-    list.push(email);
-    localStorage.setItem('safhib_subs', JSON.stringify(list));
-    form.reset();
-    showMsg("✓ Thank you! We'll keep you posted.", 'success');
-  });
-  function showMsg(text, type){
-    msg.textContent = text;
-    msg.className = 'message show ' + (type||'');
-    if (type === 'success') setTimeout(()=> msg.classList.remove('show'), 5000);
-  }
-})();
-
-/* ------------------------------
-   Theme toggle
-   ------------------------------ */
-(function () {
-  const btn = document.getElementById('themeToggle');
-  const icon = document.getElementById('themeIcon');
-  const sun = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>';
-  const moon = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
-  function apply(t){
-    document.documentElement.setAttribute('data-theme', t);
-    icon.innerHTML = (t === 'dark') ? sun : moon;
-    localStorage.setItem('safhib_theme', t);
-  }
-  const saved = localStorage.getItem('safhib_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  apply(saved);
-  btn.addEventListener('click', ()=> {
-    const current = document.documentElement.getAttribute('data-theme');
-    apply(current === 'dark' ? 'light' : 'dark');
-  });
-})();
-
-/* ------------------------------
-   Footer year
-   ------------------------------ */
-document.getElementById('year').textContent = new Date().getFullYear();
-
-/* ------------------------------
-   Logo auto-detect & fallback
-   - Tries likely filenames/paths (png)
-   - Optionally set rawUrl to your raw.githubusercontent.com path
-   ------------------------------ */
+/* ---------- Logo auto-detect (tries common filenames & folders) ---------- */
 (function () {
   const img = document.getElementById('siteLogo');
+  const favicon = document.getElementById('favicon');
   if (!img) return;
 
-  // If you prefer, set your exact raw GitHub URL here, e.g.:
-  // const rawUrl = 'https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/logo.png';
-  const rawUrl = ''; // <-- optional: fill if you want to force a URL
-
+  // Candidate paths to try (order matters). Add any custom paths you use.
   const candidates = [
-    'logo.png','Logo.png','logo.PNG','Logo.PNG',
-    './logo.png','/logo.png',
-    'images/logo.png','images/Logo.png',
-    'assets/logo.png','img/logo.png'
+    'logo.png', 'Logo.png', 'logo.PNG', 'Logo.PNG',
+    'logo.jpg', 'logo.jpeg', 'Logo.jpg', 'Logo.jpeg',
+    'images/logo.png', 'images/Logo.png',
+    'assets/logo.png', 'assets/logo.jpg',
+    './logo.png', './logo.jpg'
   ];
 
-  // Small inline SVG fallback
-  const placeholder = 'data:image/svg+xml;utf8,' + encodeURIComponent(
+  // Inline SVG fallback (data URL)
+  const placeholderSVG = encodeURIComponent(
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">' +
-      '<rect width="100%" height="100%" fill="#ffffff"/>' +
-      '<circle cx="100" cy="70" r="48" fill="#0f1e3d"/>' +
-      '<text x="100" y="135" font-family="Cormorant Garamond, serif" font-size="26" fill="#c9a96e" text-anchor="middle">SAFHIB</text>' +
+      '<rect width="100%" height="100%" fill="%23ffffff"/>' +
+      '<circle cx="100" cy="72" r="48" fill="%230f1e3d"/>' +
+      '<text x="100" y="136" font-family="Cormorant Garamond, serif" font-size="24" fill="%23c9a96e" text-anchor="middle">SAFHIB</text>' +
     '</svg>'
   );
+  const placeholder = 'data:image/svg+xml;utf8,' + placeholderSVG;
 
-  // quick HEAD checker (some hosts allow HEAD)
-  async function exists(url){
-    try {
-      const res = await fetch(url, { method: 'HEAD' });
-      return res && res.ok;
-    } catch (e) {
-      // fallback to GET if HEAD fails due to server restrictions/CORS
-      try {
-        const res2 = await fetch(url, { method: 'GET' });
-        return res2 && res2.ok;
-      } catch (e2) {
-        return false;
-      }
+  let idx = 0;
+
+  function tryNext() {
+    if (idx >= candidates.length) {
+      // nothing found -> show placeholder
+      setLogo(placeholder, true);
+      return;
     }
+    const path = candidates[idx++];
+    // attempt to load via Image() to avoid CORS/HEAD issues
+    const tester = new Image();
+    // cache-buster to avoid stale cached 404 on GH Pages
+    tester.src = path + '?v=' + (new Date()).getTime();
+    tester.onload = function () {
+      setLogo(path);
+    };
+    tester.onerror = function () {
+      tryNext();
+    };
+    // safety: if neither onload nor onerror fire after 3s, move on
+    setTimeout(function () {
+      if (!tester.complete) tryNext();
+    }, 3000);
   }
 
-  // onerror fallback
-  img.onerror = function () {
-    // If current src is not placeholder, replace with placeholder
-    if (!img.src.startsWith('data:image')) {
-      img.src = placeholder;
-      img.classList.add('small');
+  function setLogo(src, isPlaceholder) {
+    img.src = src;
+    // update favicon if it's a real file (not placeholder)
+    if (!isPlaceholder && favicon) {
+      favicon.href = src;
     }
-  };
+    img.alt = isPlaceholder ? 'SAFHIB' : 'SAFHIB logo';
+    img.setAttribute('data-logo-src', src);
+    // add a gentle visual indication if placeholder used
+    if (isPlaceholder) img.style.background = '#ffffff';
+  }
 
-  // Main detection routine
-  (async function tryPaths() {
-    // If explicit rawUrl provided, try that first
-    if (rawUrl) {
-      if (await exists(rawUrl)) { img.src = rawUrl; return; }
-    }
+  // If the current src already loads, do nothing; otherwise start trying
+  const initial = img.getAttribute('src') || '';
+  const initialTester = new Image();
+  initialTester.onload = function () { /* ok */ };
+  initialTester.onerror = function () { tryNext(); };
+  initialTester.src = initial + '?v=' + (new Date()).getTime();
 
-    // If current src already works (fast check), keep it
-    const current = img.getAttribute('src') || '';
-    if (current) {
-      if (await exists(current)) return;
-    }
-
-    for (const p of candidates) {
-      try {
-        if (await exists(p)) { img.src = p; return; }
-      } catch (e) { /* ignore and continue */ }
-    }
-
-    // Nothing found: use placeholder
-    img.src = placeholder;
-    img.classList.add('small');
-  })();
+  // If there was no initial src, start immediately
+  if (!initial) tryNext();
 })();
+
+/* ---------- Simple countdown (example target) ---------- */
+(function () {
+  const launch = new Date('2025-12-31T00:00:00Z').getTime();
+  const dEl = document.getElementById('days');
+  const hEl = document.getElementById('hours');
+  const mEl = document.getElementById('minutes');
+  const sEl = document.getElementById('seconds');
+  function tick() {
+    const now = Date.now();
+    let diff = Math.max(0, launch - now);
+    const d = Math.floor(diff / (1000*60*60*24));
+    diff -= d * (1000*60*60*24);
+    const h = Math.floor(diff / (1000*60*60));
+    diff -= h * (1000*60*60);
+    const m = Math.floor(diff / (1000*60));
+    const s = Math.floor((diff / 1000) % 60);
+    if (dEl) dEl.textContent = String(d).padStart(2,'0');
+    if (hEl) hEl.textContent = String(h).padStart(2,'0');
+    if (mEl) mEl.textContent = String(m).padStart(2,'0');
+    if (sEl) sEl.textContent = String(s).padStart(2,'0');
+    if (launch - Date.now() <= 0) clearInterval(timer);
+  }
+  tick();
+  const timer = setInterval(tick, 1000);
+})();
+
+/* ---------- Simple form behavior using localStorage ---------- */
+(function () {
+  const form = document.getElementById('notifyForm') || document.getElementById('notifyForm');
+  const email = document.getElementById('email');
+  const msg = document.getElementById('formMsg');
+  if (!form || !email || !msg) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const val = (email.value || '').trim();
+    if (!val || !val.includes('@')) {
+      msg.textContent = 'Please enter a valid email.';
+      msg.classList.add('show');
+      msg.style.color = '#c0392b';
+      return;
+    }
+    // store locally (replace with real endpoint later)
+    const list = JSON.parse(localStorage.getItem('safhib_waitlist') || '[]');
+    if (!list.includes(val)) {
+      list.push(val);
+      localStorage.setItem('safhib_waitlist', JSON.stringify(list));
+    }
+    email.value = '';
+    msg.textContent = 'Thanks — we will notify you at launch.';
+    msg.classList.add('show');
+    msg.style.color = '';
+  });
+})();
+
+/* ---------- Year in footer ---------- */
+document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
