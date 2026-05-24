@@ -1,295 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>SAFHIB — Print Your Style · Launching Soon</title>
-<meta name="description" content="SAFHIB — Premium printed shirts & print-on-demand. Print Your Style, Wear Your Identity. Launching soon." />
-<meta name="theme-color" content="#0f1e3d" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SAFHIB — Printed Shirts · Coming Soon Shop</title>
+  <meta name="description" content="SAFHIB — Premium printed shirts & print-on-demand. Shop our pre-launch collection." />
+  <link rel="icon" href="logo.png" />
 
-<!-- Open Graph -->
-<meta property="og:title" content="SAFHIB — Print Your Style" />
-<meta property="og:description" content="Premium printed shirts & print-on-demand. Launching soon." />
-<meta property="og:image" content="logo.png" />
-<meta property="og:type" content="website" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-<!-- Fallback favicon (script may update to actual detected logo) -->
-<link id="faviconLink" rel="icon" href="logo.png" />
-
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<style>
-  :root{
-    --navy:#0f1e3d;
-    --navy-2:#1c2e5a;
-    --cream:#f6f2ea;
-    --gold:#c9a96e;
-    --glass: rgba(255,255,255,0.6);
-    --glass-border: rgba(15,30,61,0.08);
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:var(--navy);background:linear-gradient(135deg,#f6f2ea 0%,#ede5d4 50%,#f6f2ea 100%);-webkit-font-smoothing:antialiased}
-  .wrap{min-height:100vh;display:flex;flex-direction:column}
-  header{display:flex;justify-content:flex-end;padding:18px 28px}
-  .theme-toggle{background:transparent;border:1px solid var(--glass-border);padding:8px;border-radius:10px;cursor:pointer}
-  main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center;position:relative}
-  /* Decorative blurred blobs */
-  .blob{position:absolute;border-radius:50%;filter:blur(110px);opacity:.22;pointer-events:none}
-  .blob.blob1{width:420px;height:420px;background:var(--navy);left:-120px;top:-120px}
-  .blob.blob2{width:360px;height:360px;background:var(--gold);right:-120px;bottom:-120px}
-  /* Logo */
-  .logo-wrap{width:170px;height:170px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;padding:12px;box-shadow:0 20px 60px rgba(15,30,61,0.12);margin-bottom:24px;position:relative}
-  .logo-wrap img{width:100%;height:100%;object-fit:contain;border-radius:50%}
-  /* Brand */
-  .brand{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(40px,8vw,72px);letter-spacing:.36em;margin:0 0 8px;background:linear-gradient(135deg,var(--navy),var(--navy-2));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .tagline{font-size:14px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:22px;color:var(--navy);opacity:.9}
-  .coming{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,28px);margin-bottom:22px;color:var(--navy);font-style:italic}
-  /* Countdown */
-  .countdown{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:26px}
-  .count-box{background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--glass-border);padding:14px 18px;border-radius:12px;min-width:82px}
-  .count-box .num{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--navy);line-height:1}
-  .count-box .label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);opacity:.75;margin-top:6px}
-  /* Notify */
-  .notify{max-width:520px;width:100%;margin:0 auto 26px}
-  .notify p{margin:0 0 10px;color:var(--navy);opacity:.85}
-  .notify form{display:flex;border-radius:999px;overflow:hidden;background:#fff;border:1px solid var(--glass-border);box-shadow:0 10px 30px rgba(15,30,61,0.08)}
-  .notify input{flex:1;padding:14px 18px;border:0;font-size:14px;outline:none}
-  .notify button{background:var(--navy);color:var(--cream);border:0;padding:0 24px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
-  .notify .message{height:20px;margin-top:10px;font-size:13px;opacity:0;transition:opacity .18s}
-  .notify .message.show{opacity:1}
-  /* Actions */
-  .actions{display:flex;gap:12px;align-items:center;justify-content:center;margin-bottom:18px;flex-wrap:wrap}
-  .btn{padding:12px 22px;border-radius:12px;border:0;cursor:pointer;font-weight:600}
-  .btn-ig{background:linear-gradient(90deg,var(--navy),var(--navy-2));color:var(--cream)}
-  .btn-secondary{background:transparent;border:1px solid var(--glass-border);color:var(--navy)}
-  /* Socials & footer */
-  .socials{display:flex;gap:12px;justify-content:center;margin-top:6px}
-  .socials a{width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--navy);color:var(--cream);text-decoration:none}
-  footer{padding:20px;text-align:center;font-size:12px;color:var(--navy);opacity:.7}
-  /* Responsive */
-  @media (max-width:520px){.brand{font-size:40px}.logo-wrap{width:140px;height:140px}}
-  /* Accessible hidden label */
-  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-</style>
+  <style>
+    /* Minimal condensed styles for clarity — tweak as needed */
+    :root{--navy:#0f1e3d;--gold:#c9a96e;--cream:#f6f2ea;--card-bg:rgba(255,255,255,0.6)}
+    *{box-sizing:border-box}body{font-family:Inter,system-ui,Arial,sans-serif;margin:0;background:linear-gradient(135deg,#f6f2ea,#ede5d4);color:var(--navy);min-height:100vh;display:flex;flex-direction:column}
+    header{display:flex;align-items:center;gap:18px;padding:20px 28px}
+    .logo-small{width:64px;height:64px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(15,30,61,0.12);overflow:hidden}
+    .logo-small img{width:88%;height:88%;object-fit:contain}
+    header h1{font-family:'Cormorant Garamond',serif;font-size:1.4rem;letter-spacing:.35em;margin:0;padding-left:.35em}
+    main{flex:1;padding:28px;max-width:1100px;margin:0 auto;width:100%}
+    .intro{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:28px}
+    .intro .tag{letter-spacing:.18em;text-transform:uppercase;opacity:.8;font-size:.86rem}
+    .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:18px}
+    .card{background:var(--card-bg);border-radius:12px;padding:12px;border:1px solid rgba(15,30,61,0.06);box-shadow:0 12px 30px rgba(15,30,61,0.06);display:flex;flex-direction:column;gap:12px}
+    .thumb{aspect-ratio:1/1;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .thumb img{width:100%;height:100%;object-fit:cover}
+    .p-title{font-weight:600;font-size:1rem;margin-top:4px}
+    .p-price{color:var(--navy);font-weight:700}
+    .p-actions{display:flex;gap:8px;align-items:center}
+    .btn{background:var(--navy);color:var(--cream);padding:10px 12px;border-radius:10px;border:none;cursor:pointer;font-weight:600}
+    .btn.secondary{background:transparent;color:var(--navy);border:1px solid rgba(15,30,61,0.08)}
+    .cart-btn{position:fixed;right:20px;bottom:20px;z-index:60;border-radius:50%;width:64px;height:64px;background:var(--navy);color:var(--cream);display:flex;align-items:center;justify-content:center;box-shadow:0 20px 50px rgba(15,30,61,0.2);border:none;cursor:pointer}
+    .cart-count{position:absolute;right:8px;top:8px;background:#e33;color:#fff;border-radius:50%;width:20px;height:20px;font-size:12px;display:flex;align-items:center;justify-content:center}
+    /* Cart drawer */
+    .drawer{position:fixed;right:0;top:0;height:100vh;width:360px;background:linear-gradient(180deg,white,#f7f5f1);box-shadow:-20px 0 60px rgba(15,30,61,0.15);transform:translateX(110%);transition:transform .28s;z-index:80;padding:20px;display:flex;flex-direction:column;gap:12px}
+    .drawer.open{transform:translateX(0)}
+    .drawer h3{margin:0;font-family:'Cormorant Garamond',serif}
+    .cart-items{flex:1;overflow:auto;display:flex;flex-direction:column;gap:10px;padding:6px}
+    .cart-row{display:flex;gap:10px;align-items:center}
+    .cart-row img{width:64px;height:64px;object-fit:cover;border-radius:8px}
+    .qty{display:flex;gap:6px;align-items:center}
+    .small{font-size:.88rem}
+    .total{font-weight:700;font-size:1.1rem}
+    footer{padding:18px;text-align:center;font-size:13px;color:rgba(15,30,61,0.7)}
+    /* Modal */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,0.45);display:none;align-items:center;justify-content:center;z-index:90;padding:18px}
+    .modal.open{display:flex}
+    .modal-card{background:white;border-radius:12px;max-width:820px;width:100%;display:grid;grid-template-columns:1fr 1fr;padding:18px;gap:12px;align-items:center}
+    .modal-card img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+    @media (max-width:760px){.modal-card{grid-template-columns:1fr;}}
+    .sr-only{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+  </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <button class="theme-toggle" id="themeToggle" aria-pressed="false" title="Toggle theme">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"></circle></svg>
-    </button>
-  </header>
 
-  <main role="main" aria-labelledby="brandTitle">
-    <div class="blob blob1" aria-hidden="true"></div>
-    <div class="blob blob2" aria-hidden="true"></div>
+<!--
+  IMPORTANT: Update these values below in the script section:
+    - PAYPAL_BUSINESS: your PayPal business email (for PayPal checkout)
+    - WHATSAPP_NUMBER: your WhatsApp number in international format (e.g. 15551234567)
+  Upload product images to /products/ as used in the products array.
+-->
 
-    <div class="logo-wrap" aria-hidden="false">
-      <img id="siteLogo" src="logo.png" alt="SAFHIB logo" />
+<header>
+  <div class="logo-small" aria-hidden="true">
+    <img id="siteLogo" src="logo.png" alt="SAFHIB logo" onerror="handleLogoError()" />
+  </div>
+  <h1>SAFHIB</h1>
+</header>
+
+<main>
+  <section class="intro">
+    <div class="tag">Print Your Style · Wear Your Identity</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;margin:8px 0 0">Pre-launch collection</h2>
+    <p style="max-width:760px;opacity:.85">Browse our printed shirts. Choose size and quantity, then checkout via PayPal or WhatsApp. This is a static demo — update PayPal & WhatsApp details in the code to accept payments.</p>
+  </section>
+
+  <section>
+    <div class="products-grid" id="productsGrid" aria-live="polite">
+      <!-- JS will render product cards here -->
+    </div>
+  </section>
+</main>
+
+<!-- Floating cart button -->
+<button id="openCart" class="cart-btn" aria-label="Open cart">
+  🛒 <span id="cartCount" class="cart-count" style="display:none">0</span>
+</button>
+
+<!-- Cart drawer -->
+<aside id="cartDrawer" class="drawer" aria-hidden="true" aria-labelledby="cartTitle" role="dialog">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <h3 id="cartTitle">Your Cart</h3>
+    <button onclick="closeCart()" aria-label="Close cart" class="btn secondary">Close</button>
+  </div>
+
+  <div class="cart-items" id="cartItems">
+    <!-- cart rows -->
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <div style="display:flex;justify-content:space-between" class="small"><div>Subtotal</div><div id="cartSubtotal">₹0</div></div>
+    <div style="display:flex;justify-content:space-between" class="small"><div>Shipping</div><div id="cartShipping">₹0</div></div>
+    <div style="display:flex;justify-content:space-between" class="total"><div>Total</div><div id="cartTotal">₹0</div></div>
+
+    <div style="display:flex;gap:8px">
+      <button class="btn" id="paypalCheckout">Pay with PayPal</button>
+      <button class="btn secondary" id="whatsappCheckout">Order via WhatsApp</button>
     </div>
 
-    <h1 id="brandTitle" class="brand">SAFHIB</h1>
-    <div class="tagline">Print Your Style · Wear Your Identity</div>
-    <div class="coming">Launching soon — join our waitlist</div>
+    <small style="opacity:.8">You can also contact: <a href="mailto:safhib.official@gmail.com">safhib.official@gmail.com</a></small>
+  </div>
+</aside>
 
-    <div class="countdown" id="countdown" aria-live="polite" aria-label="Countdown">
-      <div class="count-box"><div class="num" id="days">00</div><div class="label">Days</div></div>
-      <div class="count-box"><div class="num" id="hours">00</div><div class="label">Hours</div></div>
-      <div class="count-box"><div class="num" id="minutes">00</div><div class="label">Minutes</div></div>
-      <div class="count-box"><div class="num" id="seconds">00</div><div class="label">Seconds</div></div>
+<!-- Product modal -->
+<div id="modal" class="modal" role="dialog" aria-hidden="true">
+  <div class="modal-card" role="document">
+    <img id="modalImg" src="" alt="Product image" />
+    <div style="padding:6px 2px">
+      <h3 id="modalTitle" style="margin-top:0;font-family:'Cormorant Garamond',serif"></h3>
+      <div id="modalPrice" style="margin:8px 0;font-weight:700"></div>
+      <p id="modalDesc" style="opacity:.85"></p>
+
+      <div style="margin-top:12px">
+        <label for="sizeSelect" class="small">Size</label>
+        <select id="sizeSelect" style="padding:8px;border-radius:8px;margin-left:8px">
+          <option>S</option><option>M</option><option>L</option><option>XL</option>
+        </select>
+      </div>
+
+      <div style="margin-top:12px;display:flex;align-items:center;gap:12px">
+        <label class="small">Quantity</label>
+        <input id="modalQty" type="number" min="1" value="1" style="width:72px;padding:8px;border-radius:8px" />
+      </div>
+
+      <div style="margin-top:16px;display:flex;gap:8px">
+        <button id="addToCartBtn" class="btn">Add to cart</button>
+        <button onclick="closeModal()" class="btn secondary">Close</button>
+      </div>
     </div>
-
-    <div class="notify" aria-hidden="false">
-      <p>Be the first to know when SAFHIB launches. We won't share your email.</p>
-      <form id="notifyForm" novalidate>
-        <label for="email" class="sr-only">Email address</label>
-        <input id="email" name="email" type="email" placeholder="Enter your email" autocomplete="email" required />
-        <button type="submit">Notify Me</button>
-      </form>
-      <div id="formMessage" class="message" role="status" aria-live="polite"></div>
-    </div>
-
-    <div class="actions">
-      <!-- Buy/Shop redirects to Instagram -->
-      <button class="btn btn-ig" id="shopBtn" aria-label="Shop on Instagram">Shop on Instagram</button>
-      <a class="btn btn-secondary" href="https://www.instagram.com/safhib_official/" target="_blank" rel="noopener">Follow @safhib_official</a>
-    </div>
-
-    <div class="socials" aria-hidden="false">
-      <a href="https://www.instagram.com/safhib_official/" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.8.07 1.2.06 1.8.25 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.07 1.2.07 1.6.07 4.8s0 3.6-.07 4.8c-.06 1.2-.25 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.07-1.6.07-4.8.07s-3.6 0-4.8-.07c-1.2-.06-1.8-.25-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.8c.06-1.2.25-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zM12 7.1a4.9 4.9 0 110 9.8 4.9 4.9 0 010-9.8z"/></svg>
-      </a>
-      <a href="mailto:safhib.official@gmail.com" aria-label="Email">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      </a>
-    </div>
-  </main>
-
-  <footer>
-    © <span id="year">2025</span> SAFHIB · All Rights Reserved · <a href="https://www.instagram.com/safhib_official/" target="_blank" rel="noopener">Instagram</a>
-  </footer>
+  </div>
 </div>
 
+<footer>
+  © <span id="year"></span> SAFHIB · Printed Shirts & Print-on-Demand
+</footer>
+
 <script>
-/* ============================
-   1) Logo auto-detect with JavaScript
-   Tries common filenames/paths (case variations). If none found,
-   replaces image with an inline SVG fallback.
-   ============================ */
-(function detectLogo(){
-  const imgEl = document.getElementById('siteLogo');
-  const favicon = document.getElementById('faviconLink');
-  if(!imgEl) return;
+/* =========================
+   Config — change these
+   ========================= */
+const PAYPAL_BUSINESS = 'YOUR_PAYPAL_EMAIL@example.com'; // <-- set your PayPal business email
+const PAYPAL_CURRENCY = 'INR'; // change currency if needed (USD, EUR, etc.)
+const WHATSAPP_NUMBER = ''; // e.g. '15551234567' (international without +). Leave empty if not used
+/* ========================= */
 
-  const candidates = [
-    'logo.png','Logo.png','logo.PNG','Logo.PNG',
-    'logo.jpg','Logo.JPG','logo.jpeg','images/logo.png','assets/logo.png','./logo.png'
-  ];
-
-  // Try each candidate by creating Image() — reliable across origins.
-  (function tryOne(i){
-    if(i>=candidates.length){
-      // fallback: simple inline SVG data URL
-      const svg = `
-        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' width='400' height='400'>
-          <rect width='100%' height='100%' fill='#ffffff'/>
-          <circle cx='100' cy='70' r='46' fill='#0f1e3d'/>
-          <text x='100' y='135' font-family='Cormorant Garamond, serif' font-size='26' fill='#c9a96e' text-anchor='middle'>SAFHIB</text>
-        </svg>`;
-      const dataUrl = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
-      imgEl.src = dataUrl;
-      if(favicon) favicon.href = dataUrl;
-      return;
-    }
-
-    const path = candidates[i];
-    const tester = new Image();
-    tester.onload = function(){
-      // real image exists — use it
-      imgEl.src = path;
-      if(favicon) favicon.href = path;
-    };
-    tester.onerror = function(){
-      tryOne(i+1);
-    };
-    // Start attempt
-    tester.src = path;
-  })(0);
-})();
-
-/* ============================
-   2) Countdown (set launch date here)
-   ============================ */
-(function countdown(){
-  // Set your desired launch date/time (ISO format)
-  const launch = new Date('2025-12-31T00:00:00').getTime();
-  const elDays = document.getElementById('days');
-  const elHours = document.getElementById('hours');
-  const elMins = document.getElementById('minutes');
-  const elSecs = document.getElementById('seconds');
-
-  function pad(n){ return n.toString().padStart(2,'0'); }
-
-  function update(){
-    const now = Date.now();
-    const d = Math.max(0, launch - now);
-    if(d<=0){
-      document.getElementById('countdown').innerHTML = '<div class="count-box"><div class="num">LIVE</div><div class="label">We are live</div></div>';
-      clearInterval(timer);
-      return;
-    }
-    const days = Math.floor(d / (1000*60*60*24));
-    const hours = Math.floor((d / (1000*60*60)) % 24);
-    const mins = Math.floor((d / (1000*60)) % 60);
-    const secs = Math.floor((d / 1000) % 60);
-    if(elDays) elDays.textContent = pad(days);
-    if(elHours) elHours.textContent = pad(hours);
-    if(elMins) elMins.textContent = pad(mins);
-    if(elSecs) elSecs.textContent = pad(secs);
+/* Simple product catalog — add/remove/edit entries and upload matching images to /products/ */
+const products = [
+  {
+    id: 'shirt-001',
+    name: 'SAFHIB Classic Tee — Olive',
+    price: 799,
+    image: 'products/shirt1.png',
+    desc: 'Soft cotton tee with premium screen print. Available in S–XL.'
+  },
+  {
+    id: 'shirt-002',
+    name: 'SAFHIB Script Tee — White',
+    price: 899,
+    image: 'products/shirt2.png',
+    desc: 'Minimalist script print on white premium tee.'
+  },
+  {
+    id: 'shirt-003',
+    name: 'SAFHIB Logo Tee — Black',
+    price: 999,
+    image: 'products/shirt3.png',
+    desc: 'Bold logo front & center. Limited edition.'
   }
-  update();
-  const timer = setInterval(update, 1000);
-})();
+];
 
-/* ============================
-   3) Notify form — stores email locally (simple)
-   Replace with your email service later.
-   ============================ */
-(function notifyForm(){
-  const form = document.getElementById('notifyForm');
-  const input = document.getElementById('email');
-  const msg = document.getElementById('formMessage');
-  const STORAGE_KEY = 'safhib_waitlist';
-
-  function show(text, ok){
-    msg.textContent = text;
-    msg.classList.add('show');
-    msg.style.color = ok ? 'var(--navy)' : '#c0392b';
-    setTimeout(()=> msg.classList.remove('show'), 5000);
-  }
-
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    const val = (input.value || '').trim();
-    if(!val || !val.includes('@')){
-      show('Please enter a valid email.', false);
+/* ---------- Logo fallback detection ----------
+   Tries several likely paths, then uses SVG placeholder.
+*/
+function handleLogoError(){
+  const img = document.getElementById('siteLogo');
+  if (!img) return;
+  const candidates = ['logo.png','Logo.png','logo.PNG','Logo.PNG','logo.webp','assets/logo.png','images/logo.png','./logo.png'];
+  let idx = 0;
+  function tryNext(){
+    if (idx >= candidates.length){
+      // fallback inline svg
+      img.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">' +
+        '<rect width="100%" height="100%" fill="%23ffffff"/>' +
+        '<circle cx="100" cy="70" r="46" fill="%230f1e3d"/>' +
+        '<text x="100" y="132" font-family="Cormorant Garamond, serif" font-size="26" fill="%23c9a96e" text-anchor="middle">SAFHIB</text>' +
+        '</svg>'
+      );
+      img.alt = 'SAFHIB';
       return;
     }
-    // Save locally (simple dedupe)
-    try {
-      const list = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-      if(list.includes(val)){
-        show('You are already on the list — thanks!', true);
-      } else {
-        list.push(val);
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
-        show('Thanks — we\'ll email you at launch!', true);
-        input.value = '';
-      }
-    } catch(err){
-      console.error(err);
-      show('Could not save — try again later.', false);
-    }
-  });
-})();
+    img.src = candidates[idx++];
+    // If image fails again, 'onerror' will trigger and try next candidate
+  }
+  // override onerror to cycle through candidates only once
+  img.onerror = tryNext;
+  tryNext();
+}
 
-/* ============================
-   4) Shop button: redirect to Instagram
-   ============================ */
-document.getElementById('shopBtn').addEventListener('click', function(){
-  window.open('https://www.instagram.com/safhib_official/', '_blank', 'noopener');
+/* ---------- Render products ---------- */
+const grid = document.getElementById('productsGrid');
+function formatPrice(n){ return '₹' + (n.toFixed ? n.toFixed(0) : n); }
+function createCard(p){
+  const el = document.createElement('div');
+  el.className = 'card';
+  el.innerHTML = `
+    <div class="thumb"><img src="${p.image}" alt="${p.name}" onerror="this.src='data:image/svg+xml;utf8,${encodeURIComponent('<svg xmlns=\\'http://www.w3.org/2000/svg\\' viewBox=\\'0 0 200 200\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%23ffffff\\'/><text x=\\'50%\\' y=\\'50%\\' dominant-baseline=\\'middle\\' text-anchor=\\'middle\\' fill=\\'%23cccccc\\'>Image</text></svg>')}'"/></div>
+    <div><div class="p-title">${p.name}</div><div class="p-price">${formatPrice(p.price)}</div></div>
+    <div style="margin-top:auto" class="p-actions">
+      <button class="btn" onclick='openModal("${p.id}")'>View</button>
+      <button class="btn secondary" onclick='quickAdd("${p.id}")'>Add</button>
+    </div>
+  `;
+  return el;
+}
+products.forEach(p => grid.appendChild(createCard(p)));
+
+/* ---------- Modal logic ---------- */
+let modalProduct = null;
+function openModal(id){
+  const p = products.find(x=>x.id===id);
+  if (!p) return;
+  modalProduct = p;
+  document.getElementById('modalImg').src = p.image;
+  document.getElementById('modalTitle').textContent = p.name;
+  document.getElementById('modalPrice').textContent = formatPrice(p.price);
+  document.getElementById('modalDesc').textContent = p.desc;
+  document.getElementById('modalQty').value = 1;
+  document.getElementById('modal').classList.add('open');
+  document.getElementById('modal').setAttribute('aria-hidden','false');
+}
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+  document.getElementById('modal').setAttribute('aria-hidden','true');
+}
+
+/* ---------- Cart (localStorage) ---------- */
+const CART_KEY = 'safhib_cart_v1';
+function loadCart(){ try{ return JSON.parse(localStorage.getItem(CART_KEY)) || []; }catch(e){return [];}}
+function saveCart(cart){ localStorage.setItem(CART_KEY, JSON.stringify(cart)); }
+function getCart(){
+  return loadCart();
+}
+function setCart(c){ saveCart(c); renderCart(); }
+
+function addToCart(product, size='M', qty=1){
+  const cart = getCart();
+  const existing = cart.find(i=>i.id===product.id && i.size===size);
+  if (existing) existing.qty += qty;
+  else cart.push({ id: product.id, name: product.name, price: product.price, size, qty, image: product.image });
+  setCart(cart);
+}
+
+function quickAdd(id){
+  const p = products.find(x=>x.id===id);
+  if (!p) return;
+  addToCart(p, 'M', 1);
+  openCart();
+}
+
+/* Hook add-to-cart button in modal */
+document.getElementById('addToCartBtn').addEventListener('click', ()=>{
+  if (!modalProduct) return;
+  const size = document.getElementById('sizeSelect').value || 'M';
+  const qty = Math.max(1, parseInt(document.getElementById('modalQty').value||1));
+  addToCart(modalProduct, size, qty);
+  closeModal();
+  openCart();
 });
 
-/* ============================
-   5) Theme toggle (simple dark mode)
-   ============================ */
-(function themeToggle(){
-  const btn = document.getElementById('themeToggle');
-  const root = document.documentElement;
-  const stored = localStorage.getItem('safhib_theme');
-  if(stored === 'dark') root.setAttribute('data-theme','dark');
+/* Cart drawer UI */
+const openCartBtn = document.getElementById('openCart');
+const cartDrawer = document.getElementById('cartDrawer');
+const cartCountEl = document.getElementById('cartCount');
 
-  btn.addEventListener('click', function(){
-    const cur = root.getAttribute('data-theme');
-    if(cur === 'dark'){
-      root.removeAttribute('data-theme');
-      localStorage.setItem('safhib_theme','light');
-      btn.setAttribute('aria-pressed','false');
-    } else {
-      root.setAttribute('data-theme','dark');
-      localStorage.setItem('safhib_theme','dark');
-      btn.setAttribute('aria-pressed','true');
-    }
+openCartBtn.addEventListener('click', openCart);
+function openCart(){ cartDrawer.classList.add('open'); cartDrawer.setAttribute('aria-hidden','false'); renderCart(); }
+function closeCart(){ cartDrawer.classList.remove('open'); cartDrawer.setAttribute('aria-hidden','true'); }
+
+function renderCart(){
+  const cart = getCart();
+  const container = document.getElementById('cartItems');
+  container.innerHTML = '';
+  let subtotal = 0;
+  cart.forEach((it, idx)=>{
+    subtotal += it.price * it.qty;
+    const row = document.createElement('div');
+    row.className = 'cart-row';
+    row.innerHTML = `
+      <img src="${it.image}" alt="${it.name}" onerror="this.src='data:image/svg+xml;utf8,${encodeURIComponent('<svg xmlns=\\'http://www.w3.org/2000/svg\\' viewBox=\\'0 0 200 200\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%23ffffff\\'/><text x=\\'50%\\' y=\\'50%\\' dominant-baseline=\\'middle\\' text-anchor=\\'middle\\' fill=\\'%23cccccc\\'>No image</text></svg>')}'/>
+      <div style="flex:1">
+        <div style="font-weight:600">${it.name}</div>
+        <div class="small">Size: ${it.size} · ${formatPrice(it.price)}</div>
+        <div style="margin-top:6px;display:flex;gap:8px;align-items:center">
+          <div class="qty"><button class="btn secondary" onclick="changeQty(${idx},-1)">−</button><div style="padding:6px 8px">${it.qty}</div><button class="btn secondary" onclick="changeQty(${idx},1)">+</button></div>
+          <button class="btn secondary" style="margin-left:auto" onclick="removeItem(${idx})">Remove</button>
+        </div>
+      </div>
+    `;
+    container.appendChild(row);
   });
-})();
+  const shipping = subtotal > 0 ? 49 : 0;
+  const total = subtotal + shipping;
+  document.getElementById('cartSubtotal').textContent = subtotal ? formatPrice(subtotal) : '₹0';
+  document.getElementById('cartShipping').textContent = formatPrice(shipping);
+  document.getElementById('cartTotal').textContent = total ? formatPrice(total) : '₹0';
+  // cart count
+  const count = cart.reduce((s,i)=>s+i.qty,0);
+  if (count > 0){ cartCountEl.style.display='flex'; cartCountEl.textContent = count; } else { cartCountEl.style.display='none'; }
+}
+function changeQty(idx,delta){
+  const cart = getCart();
+  if (!cart[idx]) return;
+  cart[idx].qty = Math.max(1, cart[idx].qty + delta);
+  setCart(cart);
+}
+function removeItem(idx){
+  const cart = getCart();
+  cart.splice(idx,1);
+  setCart(cart);
+}
 
-/* ============================
-   Small housekeeping
-   ============================ */
+/* ---------- Checkout ---------- */
+/* Build and submit PayPal cart form (standard cart upload). Works without server.
+   Note: you MUST replace PAYPAL_BUSINESS above with your PayPal email.
+*/
+function paypalCheckout(){
+  if (!PAYPAL_BUSINESS || PAYPAL_BUSINESS.includes('YOUR_PAYPAL_EMAIL')) {
+    alert('Please set your PayPal business email in the page script before using PayPal checkout.');
+    return;
+  }
+  const cart = getCart();
+  if (!cart.length){ alert('Cart is empty'); return; }
+
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = 'https://www.paypal.com/cgi-bin/webscr';
+  form.style.display = 'none';
+
+  // basic PayPal cart upload fields
+  const inputs = {
+    cmd: '_cart',
+    upload: '1',
+    business: PAYPAL_BUSINESS,
+    currency_code: PAYPAL_CURRENCY
+  };
+  for (const k in inputs){
+    const inp = document.createElement('input'); inp.type='hidden'; inp.name=k; inp.value=inputs[k]; form.appendChild(inp);
+  }
+
+  // add cart items
+  cart.forEach((it, i)=>{
+    const n = i+1;
+    const name = `${it.name} (Size: ${it.size})`;
+    const nameInp = document.createElement('input'); nameInp.type='hidden'; nameInp.name = `item_name_${n}`; nameInp.value = name; form.appendChild(nameInp);
+    const qtyInp = document.createElement('input'); qtyInp.type='hidden'; qtyInp.name = `quantity_${n}`; qtyInp.value = it.qty; form.appendChild(qtyInp);
+    const amountInp = document.createElement('input'); amountInp.type='hidden'; amountInp.name = `amount_${n}`; amountInp.value = it.price.toFixed(2); form.appendChild(amountInp);
+  });
+
+  // optional: return/cancel URLs (update if you host pages for confirmation)
+  const ret = document.createElement('input'); ret.type='hidden'; ret.name='return'; ret.value=window.location.href; form.appendChild(ret);
+  const cancel = document.createElement('input'); cancel.type='hidden'; cancel.name='cancel_return'; cancel.value=window.location.href; form.appendChild(cancel);
+
+  document.body.appendChild(form);
+  form.submit();
+}
+
+/* WhatsApp checkout: builds a message with order summary and opens WhatsApp web/mobile */
+function whatsappCheckout(){
+  if (!WHATSAPP_NUMBER){ alert('Please set your WhatsApp number in the script to enable WhatsApp checkout.'); return; }
+  const cart = getCart();
+  if (!cart.length){ alert('Cart is empty'); return; }
+  let lines = ['Hello, I want to order from SAFHIB:', ''];
+  cart.forEach(it=>{
+    lines.push(`${it.qty} x ${it.name} (Size: ${it.size}) — ₹${it.price} each`);
+  });
+  const subtotal = cart.reduce((s,i)=>s + i.price*i.qty,0);
+  const shipping = subtotal>0 ? 49 : 0;
+  const total = subtotal + shipping;
+  lines.push('',`Subtotal: ₹${subtotal}`, `Shipping: ₹${shipping}`, `Total: ₹${total}`, '', 'Shipping address:', 'Name:', 'Address:', 'Phone:');
+  const text = encodeURIComponent(lines.join('\n'));
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+  window.open(url, '_blank');
+}
+
+/* Hook checkout buttons */
+document.getElementById('paypalCheckout').addEventListener('click', paypalCheckout);
+document.getElementById('whatsappCheckout').addEventListener('click', whatsappCheckout);
+
+/* ---------- Utilities ---------- */
 document.getElementById('year').textContent = new Date().getFullYear();
+
+/* initialise cart render */
+renderCart();
+
+/* Optional: when page loads, try to detect logo if it failed */
+window.addEventListener('load', ()=>{
+  const logo = document.getElementById('siteLogo');
+  // If logo failed immediately, handleLogoError will be invoked by onerror; but call if natural empty src
+  if (logo && (!logo.complete || logo.naturalWidth===0)) handleLogoError();
+});
+
+/* Close modal when clicking outside content */
+document.getElementById('modal').addEventListener('click', (e)=>{
+  if (e.target.id === 'modal') closeModal();
+});
 </script>
 </body>
 </html>
