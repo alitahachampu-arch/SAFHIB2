@@ -3,308 +3,295 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SAFHIB - Print Your Style</title>
+<title>SAFHIB | Premium Streetwear</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
 
 body{
-    font-family:Arial,sans-serif;
-    background:#fff;
-    color:#222;
-}
-
-:root{
-    --primary:#001f3f;
-    --light:#f5f5f5;
+    background:#0b0b0b;
+    color:white;
 }
 
 /* Header */
 header{
-    background:white;
-    padding:20px;
-    border-bottom:1px solid #ddd;
-    position:sticky;
-    top:0;
-    z-index:100;
-}
-
-.header-container{
-    max-width:1200px;
-    margin:auto;
     display:flex;
     justify-content:space-between;
     align-items:center;
+    padding:25px 80px;
+    background:rgba(255,255,255,0.03);
+    backdrop-filter:blur(20px);
+    position:sticky;
+    top:0;
+    border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
-.brand{
-    font-size:28px;
-    font-weight:bold;
-    color:var(--primary);
+.logo{
+    font-size:32px;
+    font-weight:800;
+    letter-spacing:5px;
 }
 
 nav a{
+    color:#bbb;
     text-decoration:none;
-    margin-left:20px;
-    color:var(--primary);
-    font-weight:bold;
+    margin-left:30px;
+    transition:.3s;
+    font-weight:500;
 }
 
-.insta-btn{
-    background:var(--primary);
+nav a:hover{
     color:white;
-    padding:10px 18px;
-    border-radius:25px;
 }
 
 /* Hero */
 .hero{
+    height:70vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
     text-align:center;
-    padding:80px 20px;
+    background:radial-gradient(circle at center,#1a1a1a,#0b0b0b);
 }
 
 .hero h1{
-    font-size:50px;
-    color:var(--primary);
+    font-size:80px;
+    font-weight:800;
+    letter-spacing:3px;
 }
 
 .hero p{
-    margin:20px 0;
-    color:#666;
+    font-size:20px;
+    color:#aaa;
+    margin-top:10px;
 }
 
-.cta{
-    display:inline-block;
-    background:var(--primary);
-    color:white;
-    padding:15px 35px;
+/* Product */
+.section{
+    padding:80px;
+}
+
+.card{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    background:rgba(255,255,255,0.04);
     border-radius:30px;
-    text-decoration:none;
-}
-
-/* Products */
-.products{
-    max-width:1200px;
-    margin:auto;
-    padding:60px 20px;
-}
-
-.section-title{
-    text-align:center;
-    font-size:42px;
-    color:var(--primary);
-    margin-bottom:50px;
-}
-
-.product-card{
-    max-width:500px;
-    margin:auto;
-    background:white;
-    border-radius:20px;
     overflow:hidden;
-    box-shadow:0 8px 25px rgba(0,0,0,0.12);
+    box-shadow:0 40px 100px rgba(0,0,0,0.6);
+    border:1px solid rgba(255,255,255,0.08);
 }
 
-.product-image{
-    width:100%;
-    height:550px;
-    background:white;
+.image{
     display:flex;
     justify-content:center;
     align-items:center;
-    padding:25px;
+    padding:60px;
+    background:linear-gradient(145deg,#111,#000);
 }
 
-.product-image img{
+.image img{
     max-width:100%;
-    max-height:100%;
+    max-height:650px;
     object-fit:contain;
+    filter:drop-shadow(0 25px 50px rgba(0,0,0,0.8));
+    transition:.4s;
 }
 
-.product-info{
-    padding:30px;
+.image img:hover{
+    transform:scale(1.05);
 }
 
-.product-name{
-    font-size:28px;
-    color:var(--primary);
-    margin-bottom:10px;
+.info{
+    padding:70px;
 }
 
-.product-desc{
-    color:#666;
-    line-height:1.6;
+.badge{
+    display:inline-block;
+    padding:8px 16px;
+    background:white;
+    color:black;
+    border-radius:50px;
+    font-weight:600;
+    font-size:13px;
+    margin-bottom:20px;
+}
+
+.title{
+    font-size:52px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.desc{
+    color:#aaa;
+    line-height:1.8;
+    margin-bottom:30px;
 }
 
 .price{
-    margin:25px 0;
+    font-size:44px;
+    font-weight:700;
 }
 
 .old{
+    font-size:22px;
     text-decoration:line-through;
-    color:#888;
-}
-
-.new{
-    font-size:32px;
-    font-weight:bold;
-    color:var(--primary);
-}
-
-.discount{
-    background:red;
-    color:white;
-    padding:6px 14px;
-    border-radius:20px;
+    color:#666;
     margin-left:10px;
 }
 
-.buy-btn{
-    width:100%;
-    padding:16px;
-    border:none;
-    background:var(--primary);
-    color:white;
-    font-size:17px;
-    border-radius:10px;
-    cursor:pointer;
-}
-
-/* Features */
 .features{
-    background:var(--light);
-    text-align:center;
-    padding:70px 20px;
+    margin:30px 0;
 }
 
-.features p{
-    margin-top:20px;
-    color:#666;
+.features li{
+    list-style:none;
+    margin:12px 0;
+    color:#ddd;
 }
 
-/* Modal */
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.6);
+/* Buttons */
+.btns{
+    display:flex;
+    gap:15px;
+    margin-top:30px;
 }
 
-.modal-content{
-    background:white;
-    max-width:500px;
-    margin:10% auto;
-    padding:30px;
-    border-radius:15px;
-    text-align:center;
-}
-
-.close-btn{
-    margin-top:15px;
-    padding:12px 25px;
+.btn{
+    padding:16px 35px;
+    border-radius:12px;
     border:none;
-    background:var(--primary);
-    color:white;
-    border-radius:10px;
     cursor:pointer;
+    font-weight:600;
+    transition:.3s;
+}
+
+.buy{
+    background:white;
+    color:black;
+}
+
+.buy:hover{
+    transform:translateY(-3px);
+}
+
+.insta{
+    background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+    color:white;
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 /* Footer */
 footer{
-    background:var(--primary);
-    color:white;
     text-align:center;
-    padding:30px;
+    padding:40px;
+    color:#777;
+    margin-top:80px;
+    border-top:1px solid rgba(255,255,255,0.08);
+}
+
+/* Mobile */
+@media(max-width:900px){
+    .card{
+        grid-template-columns:1fr;
+    }
+
+    header{
+        padding:20px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:50px;
+    }
+
+    .section{
+        padding:40px;
+    }
 }
 </style>
 </head>
+
 <body>
 
 <header>
-    <div class="header-container">
-        <div class="brand">SAFHIB</div>
-        <nav>
-            <a href="#products">Shop</a>
-            <a href="#features">About</a>
-            <a href="https://www.instagram.com/safhib_official/" target="_blank" class="insta-btn">Follow Us</a>
-        </nav>
-    </div>
+    <div class="logo">SAFHIB</div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Collection</a>
+        <a href="#">Shop</a>
+        <a href="https://www.instagram.com/safhib_official/" target="_blank">Instagram</a>
+    </nav>
 </header>
 
 <section class="hero">
-    <h1>PRINT YOUR STYLE<br>WEAR YOUR IDENTITY</h1>
-    <p>Premium Print-on-Demand Clothing Crafted for You</p>
-    <a href="#products" class="cta">Explore Collection</a>
+    <h1>SAFHIB</h1>
+    <p>Premium streetwear. Built for identity.</p>
 </section>
 
-<section class="products" id="products">
-    <h2 class="section-title">Featured Collection</h2>
+<section class="section">
 
-    <div class="product-card">
-        <div class="product-image">
-            <img src="shirt.png" alt="Classic Black T-Shirt">
+    <div class="card">
+
+        <div class="image">
+            <img src="safhib.png" alt="SAFHIB Shirt">
         </div>
 
-        <div class="product-info">
-            <h3 class="product-name">Classic Black T-Shirt</h3>
-            <p class="product-desc">
-                Premium quality, comfortable fit. Perfect canvas for your custom print design.
+        <div class="info">
+
+            <span class="badge">LIMITED DROP</span>
+
+            <div class="title">Classic Black Tee</div>
+
+            <p class="desc">
+                A premium streetwear essential designed with heavyweight cotton, 
+                modern fit, and luxury minimalist aesthetic. Built for everyday confidence.
             </p>
 
             <div class="price">
-                <span class="old">PKR 1,399</span><br>
-                <span class="new">PKR 1,099</span>
-                <span class="discount">22% OFF</span>
+                PKR 1,099 <span class="old">PKR 1,499</span>
             </div>
 
-            <button class="buy-btn" onclick="openModal()">Customize & Buy</button>
+            <ul class="features">
+                <li>✔ Premium Heavy Cotton</li>
+                <li>✔ Streetwear Fit</li>
+                <li>✔ Fade Resistant Print</li>
+                <li>✔ SAFHIB Signature Design</li>
+            </ul>
+
+            <div class="btns">
+
+                <button class="btn buy">Buy Now</button>
+
+                <a class="btn insta" href="https://www.instagram.com/safhib_official/" target="_blank">
+                    Instagram
+                </a>
+
+            </div>
+
         </div>
+
     </div>
+
 </section>
-
-<section class="features" id="features">
-    <h2 class="section-title">Why Choose SAFHIB?</h2>
-    <p>Custom Printing • Premium Quality • Fast Delivery • Affordable Prices</p>
-</section>
-
-<div id="purchaseModal" class="modal">
-    <div class="modal-content">
-        <h2>Ready to Customize?</h2>
-        <p>DM us on Instagram to place your order.</p>
-
-        <a href="https://www.instagram.com/safhib_official/" target="_blank">
-            <button class="close-btn">DM on Instagram</button>
-        </a>
-
-        <br>
-        <button class="close-btn" onclick="closeModal()">Close</button>
-    </div>
-</div>
 
 <footer>
-    <p>© 2026 SAFHIB. All rights reserved.</p>
+    © 2026 SAFHIB — Premium Streetwear Brand
 </footer>
-
-<script>
-function openModal(){
-    document.getElementById("purchaseModal").style.display="block";
-}
-
-function closeModal(){
-    document.getElementById("purchaseModal").style.display="none";
-}
-
-window.onclick=function(event){
-    const modal=document.getElementById("purchaseModal");
-    if(event.target==modal){
-        modal.style.display="none";
-    }
-}
-</script>
 
 </body>
 </html>
